@@ -4,6 +4,8 @@ repos:
       hooks:
           - id: check-yaml
           - id: check-json
+            # Exclude JSONC files (JSON with Comments) as they need comment support
+            exclude: "tsconfig.*\\.json"
           - id: check-toml
           - id: check-xml
           - id: end-of-file-fixer
