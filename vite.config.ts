@@ -10,6 +10,7 @@ export default defineConfig({
 				main: resolve(__dirname, 'index.html'),
 			},
 		},
+		sourcemap: true,
 	},
 	server: {
 		port: 3000,
