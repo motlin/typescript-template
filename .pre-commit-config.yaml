@@ -5,11 +5,14 @@ repos:
           - id: check-yaml
           - id: check-json
             # Exclude JSONC files (JSON with Comments) as they need comment support
-            exclude: "tsconfig.*\\.json"
+            # Also exclude package-lock.json as it's generated
+            exclude: "(tsconfig.*\\.json|package-lock\\.json)"
           - id: check-toml
           - id: check-xml
           - id: end-of-file-fixer
+            exclude: "package-lock\\.json"
           - id: trailing-whitespace
+            exclude: "package-lock\\.json"
           - id: check-added-large-files
             args: ['--maxkb=1000']
           - id: check-case-conflict
