@@ -1,8 +1,10 @@
 # `just --list --unsorted`
+[group('default')]
 default:
     @just --list --unsorted
 
 # `npm install`
+[group('setup')]
 install:
     npm install
 
