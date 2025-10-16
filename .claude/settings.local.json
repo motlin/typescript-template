@@ -3,5 +3,6 @@
     "allow": [
     ],
     "deny": []
-  }
+	},
+	"enableAllProjectMcpServers": true
 }
