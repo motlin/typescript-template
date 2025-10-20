@@ -12,14 +12,6 @@ install:
 install-ci:
     npm ci
 
-# Generate routes
-route-generate: install
-    npm run route:generate
-
-# Generate routes for CI
-route-generate-ci: install-ci
-    npm run route:generate
-
 # `npm run dev`
 dev: install
     npm run dev
@@ -52,13 +44,13 @@ test: install
 test-ci: install-ci
     npm run test:run
 
-# `npm run typecheck`
+# `npm run ci:typecheck`
 typecheck: install
-    npm run typecheck
+    npm run ci:typecheck
 
-# `npm run typecheck`
+# `npm run ci:typecheck`
 typecheck-ci: install-ci
-    npm run typecheck
+    npm run ci:typecheck
 
 # `npm run build`
 build: install

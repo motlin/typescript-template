@@ -25,19 +25,23 @@ const defaultConfig: Config = {
 };
 
 export function loadConfig(overrides?: Partial<Config>): Config {
-	const environment = (process.env['NODE_ENV'] ?? 'development') as Config['environment'];
+	const envEnvironment = process.env['NODE_ENV'];
+	const environment = (overrides?.environment ?? envEnvironment ?? 'development') as Config['environment'];
+	const envPort = process.env['PORT'];
+	const port = overrides?.port ?? (envPort ? Number(envPort) : undefined) ?? defaultConfig.port;
+	const apiUrl = overrides?.apiUrl ?? process.env['API_URL'] ?? defaultConfig.apiUrl;
 
 	return {
 		...defaultConfig,
 		...overrides,
 		environment,
-		port: Number(process.env['PORT']) || overrides?.port || defaultConfig.port,
-		apiUrl: process.env['API_URL'] || overrides?.apiUrl || defaultConfig.apiUrl,
+		port,
+		apiUrl,
 	};
 }
 
 export function validateConfig(config: Config): void {
-	if (config.port < 1 || config.port > 65535) {
+	if (Number.isNaN(config.port) || config.port < 1 || config.port > 65535) {
 		throw new Error(`Invalid port: ${config.port}`);
 	}
 

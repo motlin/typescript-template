@@ -90,7 +90,7 @@ const config: Linter.Config[] = [
 			'react-refresh': reactRefresh,
 		},
 		rules: {
-			...tseslint.configs.recommended.rules,
+			...(tseslint.configs?.['recommended']?.rules ?? {}),
 			...reactHooks.configs.recommended.rules,
 			'react-hooks/exhaustive-deps': 'error',
 			'@typescript-eslint/no-unused-vars': ['error', {varsIgnorePattern: '^[A-Z_]'}],

@@ -12,6 +12,7 @@ describe('Config module', () => {
 
   describe('loadConfig', () => {
     it('returns default config when no overrides provided', () => {
+      delete process.env['NODE_ENV'];
       const config = loadConfig();
 
       expect(config.appName).toBe('TypeScript Template');

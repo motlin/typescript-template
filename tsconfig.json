@@ -28,7 +28,6 @@
 		"declarationMap": true,
 		"sourceMap": true,
 		"inlineSources": true,
-		"rootDir": "./src",
 		"outDir": "./dist",
 		"newLine": "lf",
 		"types": ["node", "vitest/globals"]
