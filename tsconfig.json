@@ -3,6 +3,7 @@
 		"target": "ES2022",
 		"module": "ESNext",
 		"lib": ["ES2022", "DOM", "DOM.Iterable"],
+		"jsx": "react-jsx",
 		"strict": true,
 		"esModuleInterop": true,
 		"skipLibCheck": true,
@@ -14,7 +15,6 @@
 		"noEmit": true,
 		"strictNullChecks": true,
 		"noImplicitAny": true,
-		"jsx": "react-jsx",
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"noImplicitReturns": true,
@@ -30,7 +30,7 @@
 		"inlineSources": true,
 		"outDir": "./dist",
 		"newLine": "lf",
-		"types": ["node", "vitest/globals"]
+		"types": ["node", "vite/client", "vitest/globals"]
 	},
 	"include": ["src/**/*", "tests/**/*", "vite.config.ts", "vitest.config.ts", "eslint.config.ts"],
 	"exclude": ["node_modules", "dist", "build", "coverage"]
