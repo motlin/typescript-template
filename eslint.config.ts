@@ -58,7 +58,7 @@ const config: Linter.Config[] = [
 			},
 		},
 		plugins: {
-			'react-hooks': reactHooks,
+			'react-hooks': reactHooks as any,
 			'react-refresh': reactRefresh,
 		},
 		rules: {
@@ -89,7 +89,7 @@ const config: Linter.Config[] = [
 		},
 		plugins: {
 			'@typescript-eslint': tseslint as any,
-			'react-hooks': reactHooks,
+			'react-hooks': reactHooks as any,
 			'react-refresh': reactRefresh,
 		},
 		rules: {
