@@ -27,3 +27,5 @@ src/routeTree.gen.*
 .envrc
 eslint_report.json
 /.vite/
+
+.claude/settings.local.json
