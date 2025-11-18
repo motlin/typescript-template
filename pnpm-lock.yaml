@@ -124,8 +124,8 @@ importers:
         specifier: ^4.0.9
         version: 4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)
       vitest-browser-react:
-        specifier: ^1.0.1
-        version: 1.0.1(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(@vitest/browser@4.0.10(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1))(vitest@4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vitest@4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0))
+        specifier: ^2.0.2
+        version: 2.0.2(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vitest@4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0))
 
 packages:
 
@@ -3880,16 +3880,14 @@ packages:
       yaml:
         optional: true
 
-  vitest-browser-react@1.0.1:
-    resolution: {integrity: sha512-LqiGFCdknrbMoSDWXTCTrPsED3SvdIXIgYOOZyYUNj2dkJusW2eF6NENOlBlxwq+FBQqzNK1X59b+b03pXFpAQ==}
-    engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
+  vitest-browser-react@2.0.2:
+    resolution: {integrity: sha512-zuSgTe/CKODU3ip+w4ls6Qm4xZ9+A4OHmDf0obt/mwAqavpOtqtq2YcioZt8nfDQE50EWmhdnRfDmpS1jCsbTQ==}
     peerDependencies:
       '@types/react': ^18.0.0 || ^19.0.0
       '@types/react-dom': ^18.0.0 || ^19.0.0
-      '@vitest/browser': ^2.1.0 || ^3.0.0 || ^4.0.0-0
       react: ^18.0.0 || ^19.0.0
       react-dom: ^18.0.0 || ^19.0.0
-      vitest: ^2.1.0 || ^3.0.0 || ^4.0.0-0
+      vitest: ^4.0.0
     peerDependenciesMeta:
       '@types/react':
         optional: true
@@ -8417,9 +8415,8 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.6.1
 
-  vitest-browser-react@1.0.1(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(@vitest/browser@4.0.10(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1))(vitest@4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vitest@4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)):
+  vitest-browser-react@2.0.2(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vitest@4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)):
     dependencies:
-      '@vitest/browser': 4.0.10(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1))(vitest@4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0))
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
       vitest: 4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)
