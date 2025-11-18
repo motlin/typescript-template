@@ -35,7 +35,7 @@ importers:
         version: 9.1.16(storybook@9.1.16(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)))
       '@storybook/addon-docs':
         specifier: ^9.1.10
-        version: 9.1.16(@types/react@19.2.5)(storybook@9.1.16(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)))
+        version: 9.1.16(@types/react@19.2.6)(storybook@9.1.16(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)))
       '@storybook/addon-onboarding':
         specifier: ^9.1.10
         version: 9.1.16(storybook@9.1.16(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)))
@@ -53,16 +53,16 @@ importers:
         version: 5.90.2(@tanstack/react-query@5.90.9(react@19.2.0))(react@19.2.0)
       '@testing-library/react':
         specifier: ^16.3.0
-        version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.5))(@types/react@19.2.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+        version: 16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@types/node':
         specifier: ^24.10.1
         version: 24.10.1
       '@types/react':
-        specifier: ^19.2.5
-        version: 19.2.5
+        specifier: ^19.2.6
+        version: 19.2.6
       '@types/react-dom':
         specifier: ^19.2.3
-        version: 19.2.3(@types/react@19.2.5)
+        version: 19.2.3(@types/react@19.2.6)
       '@typescript-eslint/eslint-plugin':
         specifier: ^8.46.4
         version: 8.46.4(@typescript-eslint/parser@8.46.4(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3))(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3)
@@ -125,7 +125,7 @@ importers:
         version: 4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)
       vitest-browser-react:
         specifier: ^1.0.1
-        version: 1.0.1(@types/react-dom@19.2.3(@types/react@19.2.5))(@types/react@19.2.5)(@vitest/browser@4.0.10(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1))(vitest@4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vitest@4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0))
+        version: 1.0.1(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(@vitest/browser@4.0.10(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1))(vitest@4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vitest@4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0))
 
 packages:
 
@@ -1266,8 +1266,8 @@ packages:
     peerDependencies:
       '@types/react': ^19.2.0
 
-  '@types/react@19.2.5':
-    resolution: {integrity: sha512-keKxkZMqnDicuvFoJbzrhbtdLSPhj/rZThDlKWCDbgXmUg0rEUFtRssDXKYmtXluZlIqiC5VqkCgRwzuyLHKHw==}
+  '@types/react@19.2.6':
+    resolution: {integrity: sha512-p/jUvulfgU7oKtj6Xpk8cA2Y1xKTtICGpJYeJXz2YVO2UcvjQgeRMLDGfDeqeRW2Ta+0QNFwcc8X3GH8SxZz6w==}
 
   '@types/resolve@1.20.6':
     resolution: {integrity: sha512-A4STmOXPhMUtHH+S6ymgE2GiBSMqf4oTvcQZMcHzokuTLVYzXTB8ttjcgxOVaAp2lGwEdzZ0J+cRbbeevQj1UQ==}
@@ -4737,10 +4737,10 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
 
-  '@mdx-js/react@3.1.1(@types/react@19.2.5)(react@19.2.0)':
+  '@mdx-js/react@3.1.1(@types/react@19.2.6)(react@19.2.0)':
     dependencies:
       '@types/mdx': 2.0.13
-      '@types/react': 19.2.5
+      '@types/react': 19.2.6
       react: 19.2.0
 
   '@neoconfetti/react@1.0.0': {}
@@ -4934,9 +4934,9 @@ snapshots:
       axe-core: 4.11.0
       storybook: 9.1.16(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1))
 
-  '@storybook/addon-docs@9.1.16(@types/react@19.2.5)(storybook@9.1.16(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)))':
+  '@storybook/addon-docs@9.1.16(@types/react@19.2.6)(storybook@9.1.16(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)))':
     dependencies:
-      '@mdx-js/react': 3.1.1(@types/react@19.2.5)(react@19.2.0)
+      '@mdx-js/react': 3.1.1(@types/react@19.2.6)(react@19.2.0)
       '@storybook/csf-plugin': 9.1.16(storybook@9.1.16(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)))
       '@storybook/icons': 1.6.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@storybook/react-dom-shim': 9.1.16(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(storybook@9.1.16(@testing-library/dom@10.4.1)(prettier@3.6.2)(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1)))
@@ -5145,15 +5145,15 @@ snapshots:
       picocolors: 1.1.1
       redent: 3.0.0
 
-  '@testing-library/react@16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.5))(@types/react@19.2.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+  '@testing-library/react@16.3.0(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
     dependencies:
       '@babel/runtime': 7.28.4
       '@testing-library/dom': 10.4.1
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
     optionalDependencies:
-      '@types/react': 19.2.5
-      '@types/react-dom': 19.2.3(@types/react@19.2.5)
+      '@types/react': 19.2.6
+      '@types/react-dom': 19.2.3(@types/react@19.2.6)
 
   '@testing-library/user-event@14.6.1(@testing-library/dom@10.4.1)':
     dependencies:
@@ -5215,11 +5215,11 @@ snapshots:
     dependencies:
       undici-types: 7.16.0
 
-  '@types/react-dom@19.2.3(@types/react@19.2.5)':
+  '@types/react-dom@19.2.3(@types/react@19.2.6)':
     dependencies:
-      '@types/react': 19.2.5
+      '@types/react': 19.2.6
 
-  '@types/react@19.2.5':
+  '@types/react@19.2.6':
     dependencies:
       csstype: 3.2.3
 
@@ -8328,15 +8328,15 @@ snapshots:
       fsevents: 2.3.3
       jiti: 2.6.1
 
-  vitest-browser-react@1.0.1(@types/react-dom@19.2.3(@types/react@19.2.5))(@types/react@19.2.5)(@vitest/browser@4.0.10(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1))(vitest@4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vitest@4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)):
+  vitest-browser-react@1.0.1(@types/react-dom@19.2.3(@types/react@19.2.6))(@types/react@19.2.6)(@vitest/browser@4.0.10(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1))(vitest@4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vitest@4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)):
     dependencies:
       '@vitest/browser': 4.0.10(vite@7.2.2(@types/node@24.10.1)(jiti@2.6.1))(vitest@4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0))
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
       vitest: 4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0)
     optionalDependencies:
-      '@types/react': 19.2.5
-      '@types/react-dom': 19.2.3(@types/react@19.2.5)
+      '@types/react': 19.2.6
+      '@types/react-dom': 19.2.3(@types/react@19.2.6)
 
   vitest@4.0.9(@types/node@24.10.1)(jiti@2.6.1)(jsdom@27.2.0):
     dependencies:
