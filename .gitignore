@@ -28,4 +28,6 @@ src/routeTree.gen.*
 eslint_report.json
 /.vite/
 
-.claude/settings.local.json
+# Local documentation and context
+.llm/
+/.claude/
