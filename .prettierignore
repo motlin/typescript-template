@@ -11,8 +11,5 @@
 node_modules
 dist
 build
-.wrangler
 .llm
-package.json
-package-lock.json
 pnpm-lock.yaml
