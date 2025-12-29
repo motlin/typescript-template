@@ -17,5 +17,5 @@ export function greet(name: string): string {
 	return `Hello, ${name}!`;
 }
 
-export {type User, createUser} from './user.js';
 export {type Config, loadConfig} from './config.js';
+export {createUser, type User} from './user.js';

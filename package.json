@@ -39,8 +39,8 @@
 		"@typescript-eslint/eslint-plugin": "^8.49.0",
 		"@typescript-eslint/parser": "^8.38.0",
 		"@vitejs/plugin-react": "^5.1.2",
-		"@vitest/browser": "4.0.15",
-		"@vitest/coverage-v8": "4.0.15",
+		"@vitest/browser": "^4.0.16",
+		"@vitest/coverage-v8": "^4.0.16",
 		"eslint": "^9.39.1",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-react": "7.37.5",
@@ -55,8 +55,9 @@
 		"storybook": "^10.1.4",
 		"typescript": "^5.9.3",
 		"vite": "^7.2.7",
-		"vitest": "^4.0.9",
-		"vitest-browser-react": "^2.0.2"
+		"vitest": "^4.0.16",
+		"vitest-browser-react": "^2.0.2",
+		"@vitest/browser-playwright": "^4.0.16"
 	},
 	"dependencies": {
 		"lucide-react": "^0.561.0",
