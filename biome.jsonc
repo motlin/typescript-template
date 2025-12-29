@@ -61,6 +61,7 @@
 				"useImportType": "error",
 			},
 			"suspicious": {
+				"noExplicitAny": "error",
 				"noAsyncPromiseExecutor": "error",
 				"noCatchAssign": "error",
 				"noClassAssign": "error",
