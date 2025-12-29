@@ -10,7 +10,7 @@ import tsparser from '@typescript-eslint/parser';
 import type {Linter} from 'eslint';
 
 const config: Linter.Config[] = [
-	{ignores: ['dist', 'build', 'storybook-static', '.llm/**']},
+	{ignores: ['dist', 'build', 'storybook-static', '.llm/**', 'vitest.shims.d.ts']},
 	{
 		files: ['public/**/*.{ts,tsx}'],
 		languageOptions: {
@@ -65,7 +65,7 @@ const config: Linter.Config[] = [
 			...js.configs.recommended.rules,
 			...reactHooks.configs.recommended.rules,
 			'react-hooks/exhaustive-deps': 'error',
-			'no-unused-vars': ['error', {varsIgnorePattern: '^[A-Z_]'}],
+			'no-unused-vars': ['error', {varsIgnorePattern: '^([A-Z_]|_)', argsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_'}],
 			'react-refresh/only-export-components': ['warn', {allowConstantExport: true}],
 			eqeqeq: ['error', 'smart'],
 			'one-var': ['error', 'never'],
@@ -95,8 +95,9 @@ const config: Linter.Config[] = [
 		rules: {
 			...(tseslint.configs?.['recommended']?.rules ?? {}),
 			...reactHooks.configs.recommended.rules,
+			'react-hooks/rules-of-hooks': 'error',
 			'react-hooks/exhaustive-deps': 'error',
-			'@typescript-eslint/no-unused-vars': ['error', {varsIgnorePattern: '^[A-Z_]'}],
+			'@typescript-eslint/no-unused-vars': ['error', {varsIgnorePattern: '^([A-Z_]|_)', argsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_'}],
 			'@typescript-eslint/no-explicit-any': 'off', // TODO: Consider enabling this later
 			'react-refresh/only-export-components': ['warn', {allowConstantExport: true}],
 			eqeqeq: ['error', 'smart'],

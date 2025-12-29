@@ -32,3 +32,6 @@ eslint_report.json
 # Local documentation and context
 .llm/
 /.claude/
+
+*storybook.log
+storybook-static
