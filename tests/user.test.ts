@@ -1,12 +1,8 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 
 import { createUser, validateEmail, updateUser, type User } from '../src/user.js';
 
 describe('User module', () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-  });
-
   describe('createUser', () => {
     it('creates a user with generated id and timestamps', () => {
       const userData = {
