@@ -10,7 +10,7 @@ import tsparser from '@typescript-eslint/parser';
 import type {Linter} from 'eslint';
 
 const config: Linter.Config[] = [
-	{ignores: ['dist', 'build', '.llm/**']},
+	{ignores: ['dist', 'build', 'storybook-static', '.llm/**']},
 	{
 		files: ['public/**/*.{ts,tsx}'],
 		languageOptions: {
