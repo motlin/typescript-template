@@ -31,7 +31,9 @@ eslint_report.json
 
 # Local documentation and context
 .llm/
-/.claude/
+/.claude/*
+!/.claude/commands/
+/.claude/settings.local.json
 
 *storybook.log
 storybook-static
