@@ -42,6 +42,7 @@ test: install
 
 # `npm run test:run`
 test-ci: install-ci
+    npx playwright install --with-deps chromium
     npm run test:run
 
 # `npm run ci:typecheck`
