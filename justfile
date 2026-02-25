@@ -3,64 +3,52 @@
 default:
     @just --list --unsorted
 
-# `npm install`
+ci := env("CI", "")
+_ci := if ci != "" { ":ci" } else { "" }
+
+# `npm install` or `npm ci`
 [group('setup')]
 install:
-    npm install
+    {{ if ci != "" { "npm ci" } else { "npm install" } }}
 
-# `npm ci`
-install-ci:
-    npm ci
+# Run dev server
+dev *args: install
+    npm run dev {{args}}
 
-# `npm run dev`
-dev: install
-    npm run dev
+# Run ESLint
+eslint: install
+    npm run eslint{{_ci}}
 
-# `npm run lint`
-lint: install
-    npm run lint
+# Run Biome formatter
+biome: install
+    npm run biome{{_ci}}
 
-# `npm run ci:eslint`
-eslint-ci: install-ci
-    npm run ci:eslint
+# Run Prettier formatter
+prettier: install
+    npm run prettier{{_ci}}
 
-# `npm run format`
-format: install
-    npm run format
+# Run all formatters
+format: biome prettier
 
-# `npm run ci:biome`
-biome-ci: install-ci
-    npm run ci:biome
+# Run tests
+test *args: install
+    {{ if ci != "" { "npx playwright install --with-deps chromium" } else { "true" } }}
+    npm run test:run {{args}}
 
-# `npm run ci:prettier`
-prettier-ci: install-ci
-    npm run ci:prettier
-
-# `npm run test:run`
-test: install
-    npm run test:run
-
-# `npm run test:run`
-test-ci: install-ci
-    npx playwright install --with-deps chromium
-    npm run test:run
-
-# `npm run ci:typecheck`
+# Type-check the project
 typecheck: install
-    npm run ci:typecheck
+    npm run typecheck
 
-# `npm run ci:typecheck`
-typecheck-ci: install-ci
-    npm run ci:typecheck
-
-# `npm run build`
+# Build the project
 build: install
     npm run build
 
-# `npm run build`
-build-ci: install-ci
-    npm run build
+# Run Storybook
+storybook *args: install
+    npm run storybook {{args}}
 
 # Run all pre-commit checks
-precommit: format lint typecheck build test
-    @echo "✅ All pre-commit checks passed!"
+[arg("quick", long, value="true", help="Skip tests")]
+precommit quick="": eslint format typecheck build
+    {{ if quick != "true" { "just test" } else { "true" } }}
+    @echo "All pre-commit checks passed!"
