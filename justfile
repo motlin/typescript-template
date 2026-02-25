@@ -3,64 +3,50 @@
 default:
     @just --list --unsorted
 
-# `npm install`
+ci := env("CI", "")
+ci_prefix := if ci != "" { "ci:" } else { "" }
+
+# `npm install` or `npm ci`
 [group('setup')]
 install:
-    npm install
-
-# `npm ci`
-install-ci:
-    npm ci
+    {{ if ci != "" { "npm ci" } else { "npm install" } }}
 
 # `npm run dev`
-dev: install
-    npm run dev
+dev *args: install
+    npm run dev {{args}}
 
 # `npm run lint`
-lint: install
-    npm run lint
+eslint: install
+    npm run {{ci_prefix}}lint
 
-# `npm run ci:eslint`
-eslint-ci: install-ci
-    npm run ci:eslint
+# `npm run biome`
+biome: install
+    npm run {{ci_prefix}}biome
 
-# `npm run format`
-format: install
-    npm run format
+# `npm run prettier`
+prettier: install
+    npm run {{ci_prefix}}prettier
 
-# `npm run ci:biome`
-biome-ci: install-ci
-    npm run ci:biome
-
-# `npm run ci:prettier`
-prettier-ci: install-ci
-    npm run ci:prettier
+# Run all formatters
+format: biome prettier
 
 # `npm run test:run`
-test: install
-    npm run test:run
+test *args: install
+    {{ if ci != "" { "npx playwright install --with-deps chromium" } else { "true" } }}
+    npm run test:run {{args}}
 
-# `npm run test:run`
-test-ci: install-ci
-    npx playwright install --with-deps chromium
-    npm run test:run
-
-# `npm run ci:typecheck`
+# `npm run typecheck`
 typecheck: install
-    npm run ci:typecheck
-
-# `npm run ci:typecheck`
-typecheck-ci: install-ci
-    npm run ci:typecheck
+    npm run {{ci_prefix}}typecheck
 
 # `npm run build`
 build: install
     npm run build
 
-# `npm run build`
-build-ci: install-ci
-    npm run build
+# `npm run storybook`
+storybook *args: install
+    npm run storybook {{args}}
 
 # Run all pre-commit checks
-precommit: format lint typecheck build test
-    @echo "✅ All pre-commit checks passed!"
+precommit: eslint format typecheck build test
+    @echo "All pre-commit checks passed!"
