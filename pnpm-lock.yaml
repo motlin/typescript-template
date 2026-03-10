@@ -37,8 +37,8 @@ importers:
         specifier: ^10.2.17
         version: 10.2.17(@types/react@19.2.14)(esbuild@0.27.3)(rollup@4.58.0)(storybook@10.2.17(@testing-library/dom@10.4.1)(prettier@3.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(vite@7.3.1(@types/node@25.4.0)(jiti@2.6.1))
       '@storybook/addon-onboarding':
-        specifier: ^10.2.15
-        version: 10.2.15(storybook@10.2.17(@testing-library/dom@10.4.1)(prettier@3.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
+        specifier: ^10.2.17
+        version: 10.2.17(storybook@10.2.17(@testing-library/dom@10.4.1)(prettier@3.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
       '@storybook/addon-vitest':
         specifier: ^10.2.15
         version: 10.2.15(@vitest/browser-playwright@4.0.18)(@vitest/browser@4.0.18(vite@7.3.1(@types/node@25.4.0)(jiti@2.6.1))(vitest@4.0.18))(@vitest/runner@4.0.18)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)(storybook@10.2.17(@testing-library/dom@10.4.1)(prettier@3.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(vitest@4.0.18)
@@ -1095,10 +1095,10 @@ packages:
     peerDependencies:
       storybook: ^10.2.17
 
-  '@storybook/addon-onboarding@10.2.15':
-    resolution: {integrity: sha512-XeI84XuWV24U4ssKSXnQZszjBZus0Bqshn7IKNQLAaVxPCx6OgGc3SQrk76qwAQDLnCzZxN6iqowKKvzccioaw==}
+  '@storybook/addon-onboarding@10.2.17':
+    resolution: {integrity: sha512-+WQC4RJlIFXF+ww2aNsq0pg8JaM5el29WQ9Hd2VZrB9LdjTqckuJI+5oQBZ1GFQNQDPxlif2TJfRGgI3m1wSpA==}
     peerDependencies:
-      storybook: ^10.2.15
+      storybook: ^10.2.17
 
   '@storybook/addon-vitest@10.2.15':
     resolution: {integrity: sha512-loRdymJjh/gTEOuneusG3bYC/wrTGDLSErB3KHMva1BsDRkdGxSKzDoDzCvQnH0EYcnXW4BgeW+ekj9F65swtA==}
@@ -5189,7 +5189,7 @@ snapshots:
       - vite
       - webpack
 
-  '@storybook/addon-onboarding@10.2.15(storybook@10.2.17(@testing-library/dom@10.4.1)(prettier@3.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))':
+  '@storybook/addon-onboarding@10.2.17(storybook@10.2.17(@testing-library/dom@10.4.1)(prettier@3.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))':
     dependencies:
       storybook: 10.2.17(@testing-library/dom@10.4.1)(prettier@3.8.1)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
 
