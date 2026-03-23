@@ -35,8 +35,8 @@ repos:
             language: system
             types: [file]
 
-          - id: eslint
-            name: eslint
-            entry: npx eslint --fix
+          - id: oxlint
+            name: oxlint
+            entry: npx oxlint --fix
             language: system
             types: [file]
