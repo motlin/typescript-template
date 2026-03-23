@@ -25,10 +25,9 @@ repos:
       hooks:
           - id: biome
             name: biome
-            entry: npx @biomejs/biome format --write
+            entry: npx @biomejs/biome format --write --no-errors-on-unmatched
             language: system
             types: [file]
-            files: \.(json|jsonc)$
 
           - id: prettier
             name: prettier
@@ -40,5 +39,4 @@ repos:
             name: eslint
             entry: npx eslint --fix
             language: system
-            files: \.(js|jsx|ts|tsx|mjs|cjs)$
             types: [file]
