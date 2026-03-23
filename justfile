@@ -15,9 +15,9 @@ install:
 dev *args: install
     npm run dev {{args}}
 
-# Run ESLint
-eslint: install
-    npm run eslint{{_ci}}
+# Run Oxlint
+oxlint: install
+    npm run oxlint{{_ci}}
 
 # Run Biome formatter
 biome: install
@@ -49,6 +49,6 @@ storybook *args: install
 
 # Run all pre-commit checks
 [arg("quick", long, value="true", help="Skip tests")]
-precommit quick="": eslint format typecheck build
+precommit quick="": oxlint format typecheck build
     {{ if quick != "true" { "just test" } else { "true" } }}
     @echo "All pre-commit checks passed!"
