@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "vite",
 		"preview": "vite preview",
-		"build": "tsc && vite build",
+		"build": "tsgo && vite build",
 		"oxlint": "oxlint . --fix",
 		"oxlint:ci": "oxlint . --format github",
 		"biome": "npx biome format --write .",
@@ -14,7 +14,7 @@
 		"prettier": "prettier --write .",
 		"prettier:ci": "prettier --check \"src/**/*.{js,ts,css,md,json}\"",
 		"format": "npx biome format --write . && prettier --write .",
-		"typecheck": "tsc --noEmit",
+		"typecheck": "tsgo --noEmit",
 		"test": "vitest",
 		"test:ui": "vitest --ui",
 		"test:run": "vitest run",
@@ -37,6 +37,7 @@
 		"@types/node": "^25.5.0",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
+		"@typescript/native-preview": "^7.0.0-dev.20260323.1",
 		"@vitejs/plugin-react": "^6.0.1",
 		"@vitest/browser": "^4.1.1",
 		"@vitest/browser-playwright": "^4.1.1",
@@ -49,7 +50,6 @@
 		"playwright": "^1.58.2",
 		"prettier": "^3.8.1",
 		"storybook": "^10.3.3",
-		"typescript": "^6.0.2",
 		"vite": "^8.0.2",
 		"vitest": "^4.1.1",
 		"vitest-browser-react": "^2.1.0"
