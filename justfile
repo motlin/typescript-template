@@ -4,51 +4,48 @@ default:
     @just --list --unsorted
 
 ci := env("CI", "")
-_ci := if ci != "" { ":ci" } else { "" }
 
-# `npm install` or `npm ci`
+# Install dependencies
 [group('setup')]
 install:
-    {{ if ci != "" { "npm ci" } else { "npm install" } }}
+    vp install
+    vp fmt CLAUDE.md
 
 # Run dev server
 dev *args: install
-    npm run dev {{args}}
+    vp dev {{args}}
 
-# Run Oxlint
-oxlint: install
-    npm run oxlint{{_ci}}
+# Run linter
+lint: install
+    vp lint {{ if ci != "" { "--format github" } else { "--fix" } }}
 
-# Run Biome formatter
-biome: install
-    npm run biome{{_ci}}
+# Run formatter
+format: install
+    vp fmt {{ if ci != "" { "--check" } else { "" } }}
 
-# Run Prettier formatter
-prettier: install
-    npm run prettier{{_ci}}
-
-# Run all formatters
-format: biome prettier
+# Run checks (format + lint + typecheck)
+check: install
+    vp check {{ if ci != "" { "" } else { "--fix" } }}
 
 # Run tests
 test *args: install
-    {{ if ci != "" { "npx playwright install --with-deps chromium" } else { "true" } }}
-    npm run test:run {{args}}
+    {{ if ci != "" { "vp exec playwright install --with-deps chromium" } else { "true" } }}
+    vp run test:run {{args}}
 
 # Type-check the project
 typecheck: install
-    npm run typecheck
+    vp run typecheck
 
 # Build the project
 build: install
-    npm run build
+    vp run build
 
 # Run Storybook
 storybook *args: install
-    npm run storybook {{args}}
+    vp run storybook {{args}}
 
 # Run all pre-commit checks
 [arg("quick", long, value="true", help="Skip tests")]
-precommit quick="": oxlint format typecheck build
+precommit quick="": check build
     {{ if quick != "true" { "just test" } else { "true" } }}
     @echo "All pre-commit checks passed!"

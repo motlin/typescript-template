@@ -12,10 +12,12 @@ Template path: !`pwd`
 ## Managed Tools
 
 ### Mise Tools (.mise/config.toml)
+
 - just
 - node
 
 ### Package.json devDependencies
+
 - typescript
 - @biomejs/biome
 - eslint
@@ -47,6 +49,7 @@ Compare with `.mise/config.toml` and `package.json` in this project. If outdated
 Scan sibling projects for any versions NEWER than this template.
 
 If a sibling has a newer version:
+
 1. Ask the user whether to pull it in
 2. Update this template to match
 3. Then push to all other siblings
@@ -62,6 +65,7 @@ Replace each sibling's `.llm/todo.md` with fresh tasks (do not append to stale l
 Every task MUST include a `Source:` line referencing this template project so the task executor knows where the target version comes from.
 
 **Mise tool update:**
+
 ```
 Update <tool> <current> → <target>
   Edit .mise/config.toml
@@ -71,6 +75,7 @@ Update <tool> <current> → <target>
 ```
 
 **Package.json dependency update:**
+
 ```
 Update <dep> <current> → <target>
   Edit package.json devDependencies
@@ -85,12 +90,15 @@ Update <dep> <current> → <target>
 After syncing, report:
 
 ### This Template Status
+
 - Current versions in this template
 - Any updates made
 
 ### Improvements Pulled In
+
 - List any newer versions found in siblings
 
 ### Tasks Distributed
+
 - Number of siblings that received tasks
 - Total tasks created
