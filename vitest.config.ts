@@ -1,4 +1,4 @@
-import {defineConfig, defineProject, mergeConfig} from 'vite-plus';
+import {defineConfig, mergeConfig} from 'vite-plus';
 import viteConfig from './vite.config';
 
 // TODO: Re-enable Storybook browser tests when @storybook/addon-vitest is compatible with vite-plus's bundled vitest.
@@ -7,16 +7,8 @@ export default mergeConfig(
 	viteConfig,
 	defineConfig({
 		test: {
-			projects: [
-				defineProject({
-					test: {
-						name: 'unit',
-						globals: true,
-						environment: 'jsdom',
-						setupFiles: ['./vitest.setup.ts'],
-					},
-				}),
-			],
+			globals: true,
+			environment: 'node',
 		},
 	}),
 );
