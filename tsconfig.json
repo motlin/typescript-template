@@ -23,6 +23,7 @@
 		"exactOptionalPropertyTypes": true,
 		"noImplicitOverride": true,
 		"noPropertyAccessFromIndexSignature": true,
+		"noUncheckedSideEffectImports": true,
 		"verbatimModuleSyntax": true,
 		"declaration": true,
 		"declarationMap": true,
