@@ -30,7 +30,7 @@
 		"@sentry/vite-plugin": "^5.2.0",
 		"@storybook/addon-a11y": "^10.3.4",
 		"@storybook/addon-docs": "^10.3.5",
-		"@storybook/addon-onboarding": "^10.3.4",
+		"@storybook/addon-onboarding": "^10.3.5",
 		"@storybook/addon-vitest": "^10.3.5",
 		"@storybook/react-vite": "^10.3.5",
 		"@storybook/test-runner": "^0.24.3",
