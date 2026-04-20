@@ -42,8 +42,26 @@ If already on Vite+, compare linting config patterns.
 
 - CI setup pattern: template uses `jdx/mise-action@v4` + pnpm cache only (no explicit setup-node, setup-python, pnpm/action-setup)
 - Job structure: merge-group.yml should have pre-commit, check, build, test jobs
+- **`All checks` aggregator** (critical): merge-group.yml must define an `all-checks` job with `name: All checks` using `re-actors/alls-green@release/v1` that `needs:` every other job. The paired `scripts/configure-github.sh` sets the required status check to the literal string `"All checks"` — the name must match exactly.
 - pull-request.yml should have check-fix job (runs `vp check --fix`)
 - Action versions should match
+
+### Lint Configs (.markdownlint.jsonc, .markdownlint-cli2.jsonc, .yamllint.yaml)
+
+Markdown and YAML linting is part of the template, not optional — `oxfmt` formats these file types and `pre-commit` runs the linters.
+
+- `.markdownlint.jsonc` — rule config. Siblings may tune individual rules (e.g. disable `MD010` when the repo uses tabs in code blocks, disable `MD033` when the repo uses XML-ish tags in LLM prompts), but the file itself must exist.
+- `.markdownlint-cli2.jsonc` — globs and ignores. Each sibling sets its own `ignores` list (e.g. `.llm/`, `.remember/`, generated docs directories).
+- `.yamllint.yaml` — rule config plus `ignore:` block for any tool-local directories (`.serena/`, `.llm/`, `.remember/`).
+
+Both linters are surfaced via:
+
+- `mise.toml` entries for `"npm:markdownlint-cli2"` and `"pipx:yamllint"`
+- local pre-commit hooks with `exclude:` regexes that match the `ignores` list (pre-commit passes filenames regardless of tool-level ignores, so the hook-level exclude is required as belt-and-braces).
+
+### Scripts (scripts/configure-github.sh)
+
+The template owns `scripts/configure-github.sh`. It reads current GitHub repo settings and offers to update branch protection, merge options, and security settings. Its branch-protection logic requires the GHA `All checks` context documented above — keep the two in sync.
 
 ### Justfile
 
@@ -76,6 +94,9 @@ Also read the full configuration set for comparison in Step 3:
 - `package.json` (packageManager + devDependencies)
 - `.pre-commit-config.yaml`
 - `.github/workflows/*.yml`
+- `.markdownlint.jsonc` and `.markdownlint-cli2.jsonc`
+- `.yamllint.yaml`
+- `scripts/configure-github.sh`
 - `justfile`
 
 ### Step 2: Pull Improvements from Siblings
@@ -191,6 +212,41 @@ Update justfile to use vp commands
   Add CI env detection: ci := env("CI", "")
   Prerequisite: vite-plus migration must be done first
   Source: ~/projects/typescript-template/justfile
+```
+
+**Lint configs sync:**
+
+```
+Copy lint configs from template
+  Copy .markdownlint.jsonc from template (rule config)
+  Copy .markdownlint-cli2.jsonc from template (globs/ignores — tune ignores for this repo's directory layout)
+  Copy .yamllint.yaml from template (and tune the ignore: list for tool-local dirs like .serena/)
+  Ensure mise.toml includes "npm:markdownlint-cli2" and "pipx:yamllint"
+  Ensure .pre-commit-config.yaml has local hooks for markdownlint and yamllint with exclude: regexes matching the config ignores
+  Source: ~/projects/typescript-template
+```
+
+**All checks aggregator:**
+
+```
+Add the All checks aggregator job in merge-group.yml
+  In .github/workflows/merge-group.yml, add (or verify) a job named `all-checks` with:
+    - name: All checks
+    - if: ${{ !cancelled() }}
+    - needs: [list of every other job in merge-group.yml]
+    - steps: uses re-actors/alls-green@release/v1 with jobs: ${{ toJSON(needs) }}
+  Reason: scripts/configure-github.sh sets branch protection to require the literal "All checks" context; the job name must match exactly.
+  Source: ~/projects/typescript-template/.github/workflows/merge-group.yml
+```
+
+**GitHub configure script:**
+
+```
+Copy scripts/configure-github.sh from template
+  Copy scripts/configure-github.sh as-is (it auto-detects repo and default branch via gh)
+  chmod +x scripts/configure-github.sh
+  Pairs with the All checks aggregator above — run after merging workflow changes
+  Source: ~/projects/typescript-template/scripts/configure-github.sh
 ```
 
 ## Report Format
