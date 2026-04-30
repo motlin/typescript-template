@@ -113,7 +113,11 @@ If a sibling has a newer version:
 
 For each sibling project, compare versions and create tasks for any mismatches.
 
-Replace each sibling's `.llm/todo.md` with fresh tasks (do not append to stale lists).
+Merge new tasks into each sibling's `.llm/todo.md` without clobbering unrelated tasks.
+
+**Stale task removal:** Every template-sync task contains `Source: ~/projects/typescript-template`. Before appending new tasks, grep the existing `.llm/todo.md` for this marker. Remove each task block (the `- [ ]` line and its indented body) that contains the marker — these are stale sync tasks from a previous run. Preserve all other tasks untouched.
+
+**Appending:** After removing stale sync tasks, append the new tasks to the end of the file.
 
 ### Task Templates
 
