@@ -1,5 +1,6 @@
 import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
+import {Agentation} from 'agentation';
 
 const root = document.getElementById('app');
 
@@ -10,5 +11,6 @@ if (!root) {
 createRoot(root).render(
 	<StrictMode>
 		<div>TypeScript Template</div>
+		{import.meta.env.DEV && <Agentation />}
 	</StrictMode>,
 );
