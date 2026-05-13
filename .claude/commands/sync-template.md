@@ -23,6 +23,25 @@ Template path: !`pwd`
 - `packageManager` field (pnpm version)
 - devDependencies (typescript, eslint, vitest, etc.)
 
+### Pnpm Workspace (pnpm-workspace.yaml)
+
+The template owns `pnpm-workspace.yaml`. It defines four blocks that must stay in sync across siblings:
+
+- `catalog:` — `vite`, `vitest`, `vite-plus` resolution (so siblings can pin to `catalog:` and follow the template).
+- `overrides:` — forces `vite` and `vitest` to the catalog version.
+- `peerDependencyRules:` — relaxes vite/vitest peer constraints.
+- `allowBuilds:` — pnpm 11+ refuses to run any postinstall script not explicitly listed here. Bumping pnpm 10 → 11 causes pnpm to append a placeholder block like:
+
+    ```yaml
+    allowBuilds:
+        '@sentry/cli': set this to true or false
+        '@swc/core': set this to true or false
+        esbuild: set this to true or false
+        unrs-resolver: set this to true or false
+    ```
+
+    Each entry must be a security decision: do you trust this package to run arbitrary code on `pnpm install`? For the current template dep tree all four are legitimate native-binding installers, so they are set to `true`. Future deps may add new entries — never blindly accept `true`.
+
 ### Vite+ / Linting / Formatting
 
 If the sibling does NOT use Vite+ yet (no `vite-plus` in .mise/config.toml or package.json):
@@ -92,6 +111,7 @@ Also read the full configuration set for comparison in Step 3:
 
 - `.mise/config.toml`
 - `package.json` (packageManager + devDependencies)
+- `pnpm-workspace.yaml` (catalog, overrides, peerDependencyRules, allowBuilds)
 - `.pre-commit-config.yaml`
 - `.github/workflows/*.yml`
 - `.markdownlint.jsonc` and `.markdownlint-cli2.jsonc`
@@ -152,8 +172,30 @@ Update pnpm <current> → <target>
   Change: "packageManager": "pnpm@<current>"
   To: "packageManager": "pnpm@<target>"
   Also update all .github/workflows/*.yml where pnpm version is pinned
-  Run: pnpm install to regenerate lockfile
+  Run: CI=true pnpm install --no-frozen-lockfile (regenerates lockfile)
+  Crossing the pnpm 10 → 11 boundary: pnpm 11 appends an `allowBuilds:`
+  block to pnpm-workspace.yaml with placeholder values for every package
+  that has a postinstall script. Replace each placeholder with `true` or
+  `false` — never `true` by default. See the pnpm-workspace.yaml task
+  below for the audit list.
   Source: ~/projects/typescript-template
+```
+
+**pnpm-workspace.yaml sync:**
+
+```
+Sync pnpm-workspace.yaml from template
+  Compare ~/projects/typescript-template/pnpm-workspace.yaml against the sibling.
+  Copy or merge these blocks:
+    - catalog: (vite / vitest / vite-plus pinning)
+    - overrides: (forces vite/vitest to the catalog version)
+    - peerDependencyRules: (relax vite/vitest peer constraints)
+    - allowBuilds: (pnpm 11+ postinstall allowlist — audit each entry)
+  For allowBuilds, do not blindly copy template values. Inspect the
+  sibling's actual dep tree — only set entries to `true` for native-binding
+  installers you recognize (@sentry/cli, @swc/core, esbuild, unrs-resolver
+  are the common four). New or unknown entries must be reviewed.
+  Source: ~/projects/typescript-template/pnpm-workspace.yaml
 ```
 
 **Vite+ migration (for projects not yet on Vite+):**
