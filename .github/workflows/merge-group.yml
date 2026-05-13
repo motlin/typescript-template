@@ -74,7 +74,7 @@ jobs:
                   path: ~/.local/share/pnpm/store
                   key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
             - run: just install
-            - run: pnpm exec markdownlint-cli2
+            - run: vp exec markdownlint-cli2
 
     all-checks:
         name: All checks
