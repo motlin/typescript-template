@@ -7,7 +7,7 @@ settings:
 catalogs:
   default:
     vite-plus:
-      specifier: latest
+      specifier: ^0.1.21
       version: 0.1.21
 
 overrides:
