@@ -40,12 +40,16 @@ typecheck: install
 build: install
     vp run build
 
+# Run fallow codebase intelligence (dead code, duplication, drift)
+fallow: install
+    vp run {{ if ci != "" { "fallow:ci" } else { "fallow" } }}
+
 # Run Storybook
 storybook *args: install
     vp run storybook {{args}}
 
 # Run all pre-commit checks
 [arg("quick", long, value="true", help="Skip tests")]
-precommit quick="": check build
+precommit quick="": check build fallow
     {{ if quick != "true" { "just test" } else { "true" } }}
     @echo "All pre-commit checks passed!"

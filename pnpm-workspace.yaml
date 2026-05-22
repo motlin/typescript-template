@@ -18,4 +18,5 @@ allowBuilds:
     '@sentry/cli': true
     '@swc/core': true
     esbuild: true
+    fallow: true
     unrs-resolver: true

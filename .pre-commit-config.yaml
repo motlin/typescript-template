@@ -33,3 +33,9 @@ repos:
             entry: vp exec markdownlint-cli2
             language: system
             types: [markdown]
+          - id: fallow
+            name: fallow
+            entry: vp exec fallow fix --base HEAD --yes --no-create-config
+            language: system
+            pass_filenames: false
+            types: [file]

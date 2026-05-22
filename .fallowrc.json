@@ -1,0 +1,22 @@
+{
+	"$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
+	"entry": ["src/index.{ts,tsx,js,jsx}", "src/main.{ts,tsx,js,jsx}"],
+	"ignorePatterns": [".storybook/**"],
+	// TEMPLATE-SPECIFIC: this template ships no application source, so fallow
+	// sees its scaffolding devDependencies as unused. Real projects should drop
+	// this ignoreDependencies block and let fallow flag genuinely unused deps.
+	"ignoreDependencies": [
+		"@sentry/vite-plugin",
+		"@storybook/test-runner",
+		"@tanstack/react-query-devtools",
+		"eslint-plugin-storybook",
+		"jiti",
+		"lucide-react"
+	],
+	"duplicates": {
+		"minOccurrences": 3
+	},
+	"rules": {
+		"unused-dependencies": "warn"
+	}
+}
