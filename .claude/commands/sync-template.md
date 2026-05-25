@@ -36,6 +36,21 @@ to be identical. When in doubt, copy it.
 A sibling not yet on Vite+ needs two prerequisite tasks before any others: add
 `"npm:vite-plus"` to `.mise/config.toml`, then run `vp migrate`.
 
+## Default git test
+
+Each sibling must have a `default` git test registered so `j test-branch` works.
+Run `git test list` in the sibling — the command must match the template's:
+
+```
+just --global-justfile _check-local-modifications && (should-skip-commit || just precommit) && just --global-justfile _check-local-modifications
+```
+
+If missing or different, generate a task to register it:
+
+```
+git test add --test default 'just --global-justfile _check-local-modifications && (should-skip-commit || just precommit) && just --global-justfile _check-local-modifications' --forget
+```
+
 ## Workflow
 
 `$ARGUMENTS` is a project name, `all`, or empty (treated as `all`). Read the sibling
