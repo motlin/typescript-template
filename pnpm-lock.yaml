@@ -83,8 +83,8 @@ importers:
         specifier: ^10.4.1
         version: 10.4.1(eslint@10.4.0(jiti@2.7.0))(storybook@10.4.1(@emnapi/core@1.10.0)(@emnapi/runtime@1.10.0)(@testing-library/dom@10.4.1)(@types/react@19.2.15)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(vite-plus@0.1.22(@types/node@25.9.1)(@voidzero-dev/vite-plus-core@0.1.22(@types/node@25.9.1)(esbuild@0.27.7)(jiti@2.7.0)(typescript@6.0.2))(esbuild@0.27.7)(jiti@2.7.0)(jsdom@29.1.1)(typescript@6.0.2)))(typescript@6.0.2)
       fallow:
-        specifier: ^2.78.0
-        version: 2.78.0
+        specifier: ^2.84.0
+        version: 2.84.0
       jiti:
         specifier: ^2.7.0
         version: 2.7.0
@@ -134,6 +134,10 @@ packages:
     resolution: {integrity: sha512-9NhCeYjq9+3uxgdtp20LSiJXJvN0FeCtNGpJxuMFZ1Kv3cWUNb6DOhJwUvcVCzKGR66cw4njwM6hrJLqgOwbcw==}
     engines: {node: '>=6.9.0'}
 
+  '@babel/code-frame@7.29.7':
+    resolution: {integrity: sha512-Aup7aUOfpbAUg2ROOJN6Iw5f9DMBlzu0mIkm/malLQFN/YQgO48wCj0Kxa3sEHJvPVFg7siR+qRInwXd2qhQKw==}
+    engines: {node: '>=6.9.0'}
+
   '@babel/compat-data@7.29.3':
     resolution: {integrity: sha512-LIVqM46zQWZhj17qA8wb4nW/ixr2y1Nw+r1etiAWgRM6U1IqP+LNhL1yg440jYZR72jCWcWbLWzIosH+uP1fqg==}
     engines: {node: '>=6.9.0'}
@@ -174,6 +178,10 @@ packages:
 
   '@babel/helper-validator-identifier@7.28.5':
     resolution: {integrity: sha512-qSs4ifwzKJSV39ucNjsvc6WVHs6b7S03sOh2OcHF9UHfVPqWWALUsNUVzhSBiItjRZoLHx7nIarVjqKVusUZ1Q==}
+    engines: {node: '>=6.9.0'}
+
+  '@babel/helper-validator-identifier@7.29.7':
+    resolution: {integrity: sha512-qehxGkRj55h/ff8EMaJ+cYhyaKlHIxqYDn682wQD7RNp9UujOQsHog2uS0r2vzr4pW+sXf90NeeayjcNaX3fFg==}
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-validator-option@7.27.1':
@@ -284,8 +292,8 @@ packages:
     resolution: {integrity: sha512-05WQkdpL9COIMz4LjTxGpPNCdlpyimKppYNoJ5Di5EUObifl8t4tuLuUBBZEpoLYOmfvIWrsp9fCl0HoPRVTdA==}
     engines: {node: '>=6.9.0'}
 
-  '@babel/runtime@7.29.2':
-    resolution: {integrity: sha512-JiDShH45zKHWyGe4ZNVRrCjBz8Nh9TMmZG1kh4QTK8hCBTWBi8Da+i7s1fJw7/lYpM4ccepSNfqzZ/QvABBi5g==}
+  '@babel/runtime@7.29.7':
+    resolution: {integrity: sha512-Nq8OhGWiZIZGV6hLHoyAKLLcJihP/xFeBMGJoUrxTX2psI8dCifzLhZISFb+VWS3wFMRDmCGw5R+dOySCqPLhw==}
     engines: {node: '>=6.9.0'}
 
   '@babel/template@7.28.6':
@@ -559,43 +567,43 @@ packages:
       '@noble/hashes':
         optional: true
 
-  '@fallow-cli/darwin-arm64@2.78.0':
-    resolution: {integrity: sha512-W+ydq9oUwZb+VdCBb18tTlqSKBFPk8pRDrYanYbhmN66CqbnYfYMTojB0Wp2yflMCG9F3uGnymUvEZ9fAVRMCw==}
+  '@fallow-cli/darwin-arm64@2.84.0':
+    resolution: {integrity: sha512-3PUPTxrwJe9oei/o8d/OIo0uC56EA1wEMxGUNrhjqn3vH4qZS5ywReFGExMeHAiPoHc3KHgACUdLjlQ1IrChAA==}
     cpu: [arm64]
     os: [darwin]
 
-  '@fallow-cli/darwin-x64@2.78.0':
-    resolution: {integrity: sha512-8neGLnTKh3EpNFjllsSDlngrmO0kVj+3e3XLOC+OJQti47jT5QYvQFN7loe6Ly9OoNuFOJlMcE7o3cGu2k0IpA==}
+  '@fallow-cli/darwin-x64@2.84.0':
+    resolution: {integrity: sha512-KjmDjiqz9IHZcrMthEJ3VJu6cGnyKJEiwUyAG3ONgHYsnJTqGy8okDcsk8Su9ZGPQugMYOryz4S7CxdwroPVJQ==}
     cpu: [x64]
     os: [darwin]
 
-  '@fallow-cli/linux-arm64-gnu@2.78.0':
-    resolution: {integrity: sha512-nrgUrYttblqcMfWu+1TV2R1yTuy/mR+EjbhAKhCicr08xkaOwKlCqH+C4AENfTzIc6AyU4m5STTLyhqeAiZD0w==}
+  '@fallow-cli/linux-arm64-gnu@2.84.0':
+    resolution: {integrity: sha512-iMi885i1I3T3DoG+seF37V2HtXEhYIQj5lrdcfEjXEkoK9gnLIsL9H51bdax9ITQ+DAS0lOl6vsaP0bQ+1XgVw==}
     cpu: [arm64]
     os: [linux]
 
-  '@fallow-cli/linux-arm64-musl@2.78.0':
-    resolution: {integrity: sha512-Whadk+FZEcyVQENquN3zEXn278RYTDnqEN/MLxgN/dvCDdErAPLqgmj8cSJVAPCQL2dVkWtNC/4V/wTSVGrdNA==}
+  '@fallow-cli/linux-arm64-musl@2.84.0':
+    resolution: {integrity: sha512-NADPf0e4SD6j4rsf38ywATMm7vC6PwotyZcIzLQX6TJ28845AYxTKe1o9EawAx4lMH0BIkg0SEJLnQpLUZ0zRw==}
     cpu: [arm64]
     os: [linux]
 
-  '@fallow-cli/linux-x64-gnu@2.78.0':
-    resolution: {integrity: sha512-y3iVF+RIsz3qU2iim89c9Ri13i6huI95GCEPWyI3EEYhWgnMjKl9Z5lg5B3G57E6JSOX9TDUgbKVkk7RhcVZAQ==}
+  '@fallow-cli/linux-x64-gnu@2.84.0':
+    resolution: {integrity: sha512-plxtRxzx7n73SvdnoNSSXjKvwUKLixHGgUHB11YzM3WNOEo/2lD7PcRMFee2AAPCeCVtSa6u3IYozQCHDpduOw==}
     cpu: [x64]
     os: [linux]
 
-  '@fallow-cli/linux-x64-musl@2.78.0':
-    resolution: {integrity: sha512-+g1NmmrBG/ZQL4fx3cB0x9XZgAAkaMn3OASCuiT8Y4dBlXiO1v2DDm10kGJZn9zj32obnky/7cFXJRyEACzqaA==}
+  '@fallow-cli/linux-x64-musl@2.84.0':
+    resolution: {integrity: sha512-Io5Mw3NV3PwQRG6CC+tJQfGCgyzY9NDyBtjVuRtqcAI3KxVDeIXotrI4aiMN6uiA/1tsOfLGiN1ujitBPSM6LQ==}
     cpu: [x64]
     os: [linux]
 
-  '@fallow-cli/win32-arm64-msvc@2.78.0':
-    resolution: {integrity: sha512-9qPxykcZ9FbgiE06Lbhyje0AXPaX/RQRLi9XhIg6Fs6hP5LtgF3aiGHvImvRzLbSdrmz6yclvJVUbQDc0F5rbg==}
+  '@fallow-cli/win32-arm64-msvc@2.84.0':
+    resolution: {integrity: sha512-hwJUcScgICY0omilKl6CgsKkHv1dBot/y+BLMciwYQarchdgiX8zdGBU38HxtAi2p+uPkz/KHC+iKUofjWhkrQ==}
     cpu: [arm64]
     os: [win32]
 
-  '@fallow-cli/win32-x64-msvc@2.78.0':
-    resolution: {integrity: sha512-JzZSZ5Ri47eR/ThNYBzHutWr5l5oQElkClTPFgxXg+z+bx12gBsvpodemBiOZlhGehsHMFMoio0JS2A0dYeIQg==}
+  '@fallow-cli/win32-x64-msvc@2.84.0':
+    resolution: {integrity: sha512-wALXq3YDJ9F59hvYj+pCtTZt6e4nkKDP6bmh7ZNJtpOovT2ajKmmNaL/LF1ZYuTI74s1asBY2uFpmF5eKcJ6Zw==}
     cpu: [x64]
     os: [win32]
 
@@ -2742,8 +2750,8 @@ packages:
     resolution: {integrity: sha512-PMARsyh/JtqC20HoGqlFcIlQAyqUtW4PlI1rup1uhYJtKuwAjbvWi3GQMAn+STdHum/dk8xrKfUM1+5SAwpolA==}
     engines: {node: ^18.14.0 || ^20.0.0 || ^22.0.0 || >=24.0.0}
 
-  fallow@2.78.0:
-    resolution: {integrity: sha512-Xxuaikih2aIu9w+N68CL9rlfDTL4Bre08vJmVw/23mNl8a8zolTZDNLLqp7baROpyXZbtWdmsI0SWilWXzvnAg==}
+  fallow@2.84.0:
+    resolution: {integrity: sha512-9k8dOnQ/7MC+OPi9GQczVToA2QsLEMHcnzE28hxJD+e29QegArllUPcNuLxHmx9x441Alkf1ffh2jJyfFSWQKA==}
     engines: {node: '>=16'}
     hasBin: true
 
@@ -4493,6 +4501,12 @@ snapshots:
       js-tokens: 4.0.0
       picocolors: 1.1.1
 
+  '@babel/code-frame@7.29.7':
+    dependencies:
+      '@babel/helper-validator-identifier': 7.29.7
+      js-tokens: 4.0.0
+      picocolors: 1.1.1
+
   '@babel/compat-data@7.29.3': {}
 
   '@babel/core@7.29.0':
@@ -4554,6 +4568,8 @@ snapshots:
   '@babel/helper-string-parser@7.27.1': {}
 
   '@babel/helper-validator-identifier@7.28.5': {}
+
+  '@babel/helper-validator-identifier@7.29.7': {}
 
   '@babel/helper-validator-option@7.27.1': {}
 
@@ -4653,7 +4669,7 @@ snapshots:
 
   '@babel/runtime@7.28.6': {}
 
-  '@babel/runtime@7.29.2': {}
+  '@babel/runtime@7.29.7': {}
 
   '@babel/template@7.28.6':
     dependencies:
@@ -4857,28 +4873,28 @@ snapshots:
 
   '@exodus/bytes@1.15.0': {}
 
-  '@fallow-cli/darwin-arm64@2.78.0':
+  '@fallow-cli/darwin-arm64@2.84.0':
     optional: true
 
-  '@fallow-cli/darwin-x64@2.78.0':
+  '@fallow-cli/darwin-x64@2.84.0':
     optional: true
 
-  '@fallow-cli/linux-arm64-gnu@2.78.0':
+  '@fallow-cli/linux-arm64-gnu@2.84.0':
     optional: true
 
-  '@fallow-cli/linux-arm64-musl@2.78.0':
+  '@fallow-cli/linux-arm64-musl@2.84.0':
     optional: true
 
-  '@fallow-cli/linux-x64-gnu@2.78.0':
+  '@fallow-cli/linux-x64-gnu@2.84.0':
     optional: true
 
-  '@fallow-cli/linux-x64-musl@2.78.0':
+  '@fallow-cli/linux-x64-musl@2.84.0':
     optional: true
 
-  '@fallow-cli/win32-arm64-msvc@2.78.0':
+  '@fallow-cli/win32-arm64-msvc@2.84.0':
     optional: true
 
-  '@fallow-cli/win32-x64-msvc@2.78.0':
+  '@fallow-cli/win32-x64-msvc@2.84.0':
     optional: true
 
   '@hapi/hoek@9.3.0': {}
@@ -5787,8 +5803,8 @@ snapshots:
 
   '@testing-library/dom@10.4.1':
     dependencies:
-      '@babel/code-frame': 7.29.0
-      '@babel/runtime': 7.29.2
+      '@babel/code-frame': 7.29.7
+      '@babel/runtime': 7.29.7
       '@types/aria-query': 5.0.4
       aria-query: 5.3.0
       dom-accessibility-api: 0.5.16
@@ -6766,18 +6782,18 @@ snapshots:
       jest-mock: 30.4.1
       jest-util: 30.4.1
 
-  fallow@2.78.0:
+  fallow@2.84.0:
     dependencies:
       detect-libc: 2.1.2
     optionalDependencies:
-      '@fallow-cli/darwin-arm64': 2.78.0
-      '@fallow-cli/darwin-x64': 2.78.0
-      '@fallow-cli/linux-arm64-gnu': 2.78.0
-      '@fallow-cli/linux-arm64-musl': 2.78.0
-      '@fallow-cli/linux-x64-gnu': 2.78.0
-      '@fallow-cli/linux-x64-musl': 2.78.0
-      '@fallow-cli/win32-arm64-msvc': 2.78.0
-      '@fallow-cli/win32-x64-msvc': 2.78.0
+      '@fallow-cli/darwin-arm64': 2.84.0
+      '@fallow-cli/darwin-x64': 2.84.0
+      '@fallow-cli/linux-arm64-gnu': 2.84.0
+      '@fallow-cli/linux-arm64-musl': 2.84.0
+      '@fallow-cli/linux-x64-gnu': 2.84.0
+      '@fallow-cli/linux-x64-musl': 2.84.0
+      '@fallow-cli/win32-arm64-msvc': 2.84.0
+      '@fallow-cli/win32-x64-msvc': 2.84.0
 
   fast-deep-equal@3.1.3: {}
 
