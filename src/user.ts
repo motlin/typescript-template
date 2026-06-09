@@ -7,11 +7,12 @@ export interface User {
 }
 
 export function createUser(data: Omit<User, 'id' | 'createdAt' | 'updatedAt'>): User {
+	const now = new Date();
 	return {
 		...data,
 		id: crypto.randomUUID(),
-		createdAt: new Date(),
-		updatedAt: new Date(),
+		createdAt: now,
+		updatedAt: now,
 	};
 }
 

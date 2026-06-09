@@ -80,7 +80,9 @@ describe('Config module', () => {
 				},
 			};
 
-			expect(() => validateConfig(config)).not.toThrow();
+			expect(() => {
+				validateConfig(config);
+			}).not.toThrow();
 		});
 
 		it('throws for invalid port numbers', () => {
@@ -88,7 +90,9 @@ describe('Config module', () => {
 
 			for (const port of invalidPorts) {
 				const config = loadConfig({port});
-				expect(() => validateConfig(config)).toThrow(`Invalid port: ${port}`);
+				expect(() => {
+					validateConfig(config);
+				}).toThrow(`Invalid port: ${port}`);
 			}
 		});
 
@@ -97,7 +101,9 @@ describe('Config module', () => {
 
 			for (const apiUrl of invalidUrls) {
 				const config = loadConfig({apiUrl});
-				expect(() => validateConfig(config)).toThrow(`Invalid API URL: ${apiUrl}`);
+				expect(() => {
+					validateConfig(config);
+				}).toThrow(`Invalid API URL: ${apiUrl}`);
 			}
 		});
 
@@ -106,7 +112,9 @@ describe('Config module', () => {
 
 			for (const apiUrl of validUrls) {
 				const config = loadConfig({apiUrl});
-				expect(() => validateConfig(config)).not.toThrow();
+				expect(() => {
+					validateConfig(config);
+				}).not.toThrow();
 			}
 		});
 	});

@@ -24,11 +24,19 @@ const defaultConfig: Config = {
 	},
 };
 
+const environments: ReadonlyArray<Config['environment']> = ['development', 'staging', 'production'];
+
+function parseEnvironment(value: string | undefined): Config['environment'] | undefined {
+	return environments.find((candidate) => candidate === value);
+}
+
 export function loadConfig(overrides?: Partial<Config>): Config {
-	const envEnvironment = process.env['NODE_ENV'];
-	const environment = (overrides?.environment ?? envEnvironment ?? 'development') as Config['environment'];
+	const environment = overrides?.environment ?? parseEnvironment(process.env['NODE_ENV']) ?? 'development';
 	const envPort = process.env['PORT'];
-	const port = overrides?.port ?? (envPort ? Number(envPort) : undefined) ?? defaultConfig.port;
+	const port =
+		overrides?.port ??
+		(envPort !== undefined && envPort !== '' ? Number(envPort) : undefined) ??
+		defaultConfig.port;
 	const apiUrl = overrides?.apiUrl ?? process.env['API_URL'] ?? defaultConfig.apiUrl;
 
 	return {
