@@ -48,8 +48,12 @@ fallow: install
 storybook *args: install
     vp run storybook {{args}}
 
+# Run pre-commit hooks on all files (same as CI's pre-commit job)
+pre-commit: install
+    pre-commit run --all-files
+
 # Run all pre-commit checks
 [arg("quick", long, value="true", help="Skip tests")]
-precommit quick="": check build fallow
+precommit quick="": check build fallow pre-commit
     {{ if quick != "true" { "just test" } else { "true" } }}
     @echo "All pre-commit checks passed!"
