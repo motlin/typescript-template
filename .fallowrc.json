@@ -1,6 +1,8 @@
 {
 	"$schema": "https://raw.githubusercontent.com/fallow-rs/fallow/main/schema.json",
-	"entry": ["src/index.{ts,tsx,js,jsx}", "src/main.{ts,tsx,js,jsx}"],
+	// src/**/*.mdx mirrors the Storybook stories glob in .storybook/main.ts;
+	// fallow's storybook plugin only detects *.stories.* files, not docs pages.
+	"entry": ["src/index.{ts,tsx,js,jsx}", "src/main.{ts,tsx,js,jsx}", "src/**/*.mdx"],
 	"ignorePatterns": [".storybook/**"],
 	// TEMPLATE-SPECIFIC: this template ships no application source, so fallow
 	// sees its scaffolding devDependencies as unused. Real projects should drop
