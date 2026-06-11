@@ -36,6 +36,30 @@ to be identical. When in doubt, copy it.
 A sibling not yet on Vite+ needs two prerequisite tasks before any others: add
 `"npm:vite-plus"` to `.mise/config.toml`, then run `vp migrate`.
 
+## Stale and conflicting tool configs
+
+Siblings synced from older template versions may carry config files for tools the
+template no longer uses. These conflict with the current toolchain (e.g. a leftover
+Prettier config fighting oxfmt over formatting). In each sibling, scan for configs
+belonging to tools the template does not use, including hidden dotfiles:
+
+- **Formatting (template uses oxfmt):** `.prettierrc*` (`.prettierrc`,
+  `.prettierrc.json`, `.prettierrc.json5`, `.prettierrc.yaml`, `.prettierrc.js`, …),
+  `.prettierignore`, `prettier.config.*`, a `prettier` key in `package.json`,
+  `.editorconfig` rules that contradict oxfmt.
+- **Linting (template uses oxlint):** `biome.json`, `biome.jsonc`, `.eslintrc*`,
+  `eslint.config.*`, `.eslintignore`, `tslint.json`.
+- **General:** any other dot-config, `package.json` script, devDependency, or
+  pre-commit hook referencing a tool the template has dropped.
+
+A quick scan: `ls -a` the sibling root and compare every tool config against the
+template's file list; anything the template lacks is suspect.
+
+**Never delete these proactively.** They may be intentional per-project choices.
+Instead, alert the user: list each suspect file in the sync report and generate a
+task that names the file, explains the conflict (e.g. "stale Prettier config
+conflicts with oxfmt"), and asks the user to confirm removal.
+
 ## Default git test
 
 Each sibling must have a `default` git test registered so `j test-branch` works.
@@ -60,7 +84,9 @@ list from `.llm/sync-projects.md` (gitignored, machine-specific).
    `npm outdated`) and update the template first if it is behind.
 2. **Pull from siblings.** If a sibling has something newer or better than the
    template, ask the user, update the template, then propagate.
-3. **Generate tasks.** For each sibling, compare against the template and write
+3. **Scan for stale configs.** For each sibling, run the stale-config scan above
+   before generating tooling tasks. Alert on findings; do not delete.
+4. **Generate tasks.** For each sibling, compare against the template and write
    tasks into its `.llm/todo.md` that bring each out-of-sync file in line.
 
 **Stale task removal:** every sync task ends with a `Source: ~/projects/typescript-template`
@@ -83,4 +109,6 @@ must say so.
 ## Report
 
 After syncing, report: template versions and any template updates made; anything
-pulled in from siblings; number of siblings synced and tasks created.
+pulled in from siblings; number of siblings synced and tasks created; and every
+stale or conflicting tool config found, per sibling, with a note that the user
+should confirm removal.
