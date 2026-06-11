@@ -177,6 +177,62 @@ check_security_setting "automated-security-fixes"  "automated security fixes (De
 echo ""
 
 # ============================================================================
+# Actions Workflow Permissions
+# ============================================================================
+
+echo "=== Actions Workflow Permissions ==="
+echo ""
+
+WORKFLOW_PERMS=$(gh api "repos/${REPO}/actions/permissions/workflow")
+DEFAULT_PERMS=$(echo "$WORKFLOW_PERMS" | jq -r '.default_workflow_permissions')
+CAN_APPROVE=$(echo "$WORKFLOW_PERMS" | jq -r '.can_approve_pull_request_reviews')
+
+if [[ "$DEFAULT_PERMS" != "read" ]]; then
+    if confirm "Reset default workflow token permissions to read-only? (currently: $DEFAULT_PERMS; workflows needing write should declare a permissions: block)"; then
+        gh api "repos/${REPO}/actions/permissions/workflow" --method PUT --field default_workflow_permissions=read > /dev/null
+        echo "  Updated."
+    fi
+fi
+
+if [[ "$CAN_APPROVE" == "true" ]]; then
+    if confirm "Disallow Actions from approving pull request reviews? (currently allowed)"; then
+        gh api "repos/${REPO}/actions/permissions/workflow" --method PUT --field can_approve_pull_request_reviews=false > /dev/null
+        echo "  Updated."
+    fi
+fi
+
+echo ""
+
+# ============================================================================
+# Secrets Audit
+# ============================================================================
+
+echo "=== Secrets Audit ==="
+echo ""
+
+# Warn about secrets referenced by workflows that don't exist on the repo.
+# Secrets can't be restored by script (e.g. after repo recreation), but the gap
+# should be surfaced.
+WORKFLOWS_DIR="$(git rev-parse --show-toplevel)/.github/workflows"
+REFERENCED_SECRETS=$(grep -rhoE 'secrets\.[A-Za-z_][A-Za-z0-9_]*' "$WORKFLOWS_DIR" 2>/dev/null | sed 's/^secrets\.//' | sort -u | grep -vx 'GITHUB_TOKEN' || true)
+EXISTING_SECRETS=$(gh api "repos/${REPO}/actions/secrets" --jq '.secrets[].name' 2>/dev/null || true)
+
+if [[ -z "$REFERENCED_SECRETS" ]]; then
+    echo "  No secrets referenced by workflows."
+else
+    MISSING=false
+    while IFS= read -r secret; do
+        if ! grep -qx "$secret" <<< "$EXISTING_SECRETS"; then
+            echo "  WARNING: workflows reference secrets.$secret but no such repo secret exists"
+            MISSING=true
+        fi
+    done <<< "$REFERENCED_SECRETS"
+    [[ "$MISSING" == "false" ]] && echo "  All referenced secrets exist."
+fi
+
+echo ""
+
+# ============================================================================
 # Summary
 # ============================================================================
 
