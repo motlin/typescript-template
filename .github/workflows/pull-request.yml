@@ -43,6 +43,8 @@ jobs:
             - uses: jdx/mise-action@v4
               with:
                   cache: true
+              env:
+                  GITHUB_TOKEN: ${{ github.token }}
             - uses: actions/cache@v5
               with:
                   path: ~/.local/share/pnpm/store
@@ -85,6 +87,8 @@ jobs:
                   token: ${{ secrets.GITHUB_TOKEN }}
 
             - uses: jdx/mise-action@v4
+              env:
+                  GITHUB_TOKEN: ${{ github.token }}
 
             - run: just install
 
