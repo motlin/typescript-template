@@ -4,6 +4,7 @@
 	"description": "A standardized TypeScript project template",
 	"type": "module",
 	"scripts": {
+		"preinstall": "npx only-allow pnpm",
 		"dev": "vp dev",
 		"preview": "vp preview",
 		"build": "tsgo && vp build",

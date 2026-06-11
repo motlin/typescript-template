@@ -6,13 +6,13 @@ repos:
             args: ['--allow-multiple-documents']
           - id: check-json
             # Exclude JSONC files (JSON with Comments) as they need comment support
-            exclude: "tsconfig.*\\.json|package-lock\\.json|biome\\.jsonc|\\.fallowrc\\.json"
+            exclude: "tsconfig.*\\.json|\\.fallowrc\\.json"
           - id: check-toml
           - id: check-xml
           - id: end-of-file-fixer
-            exclude: "package-lock\\.json|^\\.idea/"
+            exclude: "pnpm-lock\\.yaml|^\\.idea/"
           - id: trailing-whitespace
-            exclude: "package-lock\\.json|^\\.idea/"
+            exclude: "pnpm-lock\\.yaml|^\\.idea/"
           - id: check-added-large-files
             args: ['--maxkb=1000']
           - id: check-case-conflict
@@ -33,6 +33,12 @@ repos:
             entry: vp exec markdownlint-cli2
             language: system
             types: [markdown]
+          - id: yamllint
+            name: yamllint
+            entry: yamllint
+            language: system
+            types: [yaml]
+            exclude: "^(node_modules/|dist/|storybook-static/|\\.llm/|\\.claude/|pnpm-lock\\.yaml)"
           - id: fallow
             name: fallow
             entry: vp exec fallow fix --base HEAD --yes --no-create-config
