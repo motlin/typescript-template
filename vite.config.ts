@@ -12,6 +12,15 @@ export default defineConfig({
 		bracketSpacing: false,
 		trailingComma: 'all',
 		arrowParens: 'always',
+		overrides: [
+			{
+				files: ['.yamllint.yaml', '**/*.yaml', '**/*.yml'],
+				options: {
+					useTabs: false,
+					tabWidth: 2,
+				},
+			},
+		],
 	},
 	staged: {
 		'*': 'vp check --fix',
