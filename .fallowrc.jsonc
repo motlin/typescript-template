@@ -13,12 +13,12 @@
 		"@tanstack/react-query-devtools",
 		"eslint-plugin-storybook",
 		"jiti",
-		"lucide-react"
+		"lucide-react",
 	],
 	"duplicates": {
-		"minOccurrences": 3
+		"minOccurrences": 3,
 	},
 	"rules": {
-		"unused-dependencies": "warn"
-	}
+		"unused-dependencies": "warn",
+	},
 }
