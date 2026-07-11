@@ -1,58 +1,58 @@
 version: 2
 updates:
-  - package-ecosystem: 'npm'
-    directory: '/'
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
-      interval: 'daily'
-      time: '07:00'
-      timezone: 'America/New_York'
+      interval: "daily"
+      time: "07:00"
+      timezone: "America/New_York"
     open-pull-requests-limit: 25
     cooldown:
       default-days: 1
     labels:
-      - 'dependencies'
+      - "dependencies"
     groups:
       typescript-ecosystem:
         patterns:
-          - 'typescript'
+          - "typescript"
       vite-ecosystem:
         patterns:
-          - 'vite'
-          - '@vitejs/*'
+          - "vite"
+          - "@vitejs/*"
       testing:
         patterns:
-          - 'vitest'
-          - '@vitest/*'
-          - '@testing-library/*'
-          - 'playwright'
+          - "vitest"
+          - "@vitest/*"
+          - "@testing-library/*"
+          - "playwright"
       react-ecosystem:
         patterns:
-          - 'react'
-          - '@types/react*'
-          - 'react-*'
+          - "react"
+          - "@types/react*"
+          - "react-*"
       tanstack:
         patterns:
-          - '@tanstack/*'
+          - "@tanstack/*"
       firebase:
         patterns:
-          - 'firebase'
-          - 'firebase-*'
-          - 'react-firebase-*'
+          - "firebase"
+          - "firebase-*"
+          - "react-firebase-*"
     commit-message:
-      prefix: 'dependabot'
-      include: 'scope'
+      prefix: "dependabot"
+      include: "scope"
 
-  - package-ecosystem: 'github-actions'
-    directory: '/'
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
-      interval: 'daily'
-      time: '07:00'
-      timezone: 'America/New_York'
+      interval: "daily"
+      time: "07:00"
+      timezone: "America/New_York"
     open-pull-requests-limit: 25
     cooldown:
       default-days: 1
     labels:
-      - 'dependencies'
+      - "dependencies"
     commit-message:
-      prefix: 'dependabot'
-      include: 'scope'
+      prefix: "dependabot"
+      include: "scope"

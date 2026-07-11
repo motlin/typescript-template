@@ -6,7 +6,7 @@ export interface User {
 	updatedAt: Date;
 }
 
-export function createUser(data: Omit<User, 'id' | 'createdAt' | 'updatedAt'>): User {
+export function createUser(data: Omit<User, "id" | "createdAt" | "updatedAt">): User {
 	const now = new Date();
 	return {
 		...data,
@@ -21,7 +21,7 @@ export function validateEmail(email: string): boolean {
 	return emailRegex.test(email);
 }
 
-export function updateUser(user: User, updates: Partial<Omit<User, 'id' | 'createdAt'>>): User {
+export function updateUser(user: User, updates: Partial<Omit<User, "id" | "createdAt">>): User {
 	return {
 		...user,
 		...updates,

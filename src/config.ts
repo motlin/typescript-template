@@ -1,7 +1,7 @@
 export interface Config {
 	appName: string;
 	version: string;
-	environment: 'development' | 'staging' | 'production';
+	environment: "development" | "staging" | "production";
 	port: number;
 	apiUrl: string;
 	features: {
@@ -12,11 +12,11 @@ export interface Config {
 }
 
 const defaultConfig: Config = {
-	appName: 'TypeScript Template',
-	version: '1.0.0',
-	environment: 'development',
+	appName: "TypeScript Template",
+	version: "1.0.0",
+	environment: "development",
 	port: 3000,
-	apiUrl: 'http://localhost:3000/api',
+	apiUrl: "http://localhost:3000/api",
 	features: {
 		enableLogging: true,
 		enableMetrics: false,
@@ -24,20 +24,20 @@ const defaultConfig: Config = {
 	},
 };
 
-const environments: ReadonlyArray<Config['environment']> = ['development', 'staging', 'production'];
+const environments: ReadonlyArray<Config["environment"]> = ["development", "staging", "production"];
 
-function parseEnvironment(value: string | undefined): Config['environment'] | undefined {
+function parseEnvironment(value: string | undefined): Config["environment"] | undefined {
 	return environments.find((candidate) => candidate === value);
 }
 
 export function loadConfig(overrides?: Partial<Config>): Config {
-	const environment = overrides?.environment ?? parseEnvironment(process.env['NODE_ENV']) ?? 'development';
-	const envPort = process.env['PORT'];
+	const environment = overrides?.environment ?? parseEnvironment(process.env["NODE_ENV"]) ?? "development";
+	const envPort = process.env["PORT"];
 	const port =
 		overrides?.port ??
-		(envPort !== undefined && envPort !== '' ? Number(envPort) : undefined) ??
+		(envPort !== undefined && envPort !== "" ? Number(envPort) : undefined) ??
 		defaultConfig.port;
-	const apiUrl = overrides?.apiUrl ?? process.env['API_URL'] ?? defaultConfig.apiUrl;
+	const apiUrl = overrides?.apiUrl ?? process.env["API_URL"] ?? defaultConfig.apiUrl;
 
 	return {
 		...defaultConfig,
