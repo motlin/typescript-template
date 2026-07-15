@@ -24,6 +24,7 @@
 		"prepare": "VITE_GIT_HOOKS=0 vp config"
 	},
 	"dependencies": {
+		"agentation": "^3.0.2",
 		"lucide-react": "^1.24.0",
 		"react": "^19.2.7",
 		"react-dom": "^19.2.7"
@@ -44,7 +45,6 @@
 		"@types/react-dom": "^19.2.3",
 		"@typescript/native-preview": "^7.0.0-dev.20260707.2",
 		"@vitejs/plugin-react": "^6.0.3",
-		"agentation": "^3.0.2",
 		"eslint": "^10.7.0",
 		"eslint-plugin-storybook": "^10.5.0",
 		"fallow": "^3.5.1",

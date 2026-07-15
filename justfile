@@ -40,9 +40,14 @@ typecheck: install
 build: install
     vp run build
 
-# Run fallow codebase intelligence (dead code, duplication, drift)
+# Apply safe Fallow fixes locally, then reject remaining dead code
 fallow: install
-    vp run {{ if ci != "" { "fallow:ci" } else { "fallow" } }}
+    {{ if ci == "" { "vp run fallow" } else { "true" } }}
+    vp run fallow:ci
+
+# vp run fallow:ci
+fallow-check: install
+    vp run fallow:ci
 
 # Run Storybook
 storybook *args: install

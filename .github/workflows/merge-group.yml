@@ -127,7 +127,8 @@ jobs:
         with:
           path: ~/.local/share/pnpm/store
           key: pnpm-${{ hashFiles('pnpm-lock.yaml') }}
-      - run: just fallow
+      - name: Reject Fallow findings
+        run: just fallow-check
 
   all-checks:
     name: All checks

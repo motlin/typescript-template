@@ -20,9 +20,6 @@
 		"jiti",
 		"lucide-react",
 	],
-	"duplicates": {
-		"minOccurrences": 3,
-	},
 	"rules": {
 		"unused-dependencies": "warn",
 	},
