@@ -33,6 +33,7 @@ eslint_report.json
 .llm/
 /.claude/*
 !/.claude/commands/
+!/.claude/includes/
 /.claude/settings.local.json
 
 *storybook.log

@@ -11,7 +11,13 @@ template's.
 
 Template path: !`pwd`
 
-## The rule
+## Managed files
+
+`.mise/config.toml`, `package.json`, `pnpm-workspace.yaml`, `.pre-commit-config.yaml`,
+`.github/workflows/*.yml`, `justfile`, `.fallowrc.json`, `.markdownlint.jsonc`,
+`.markdownlint-cli2.jsonc`, `.yamllint.yaml`, `scripts/configure-github.sh`.
+
+### The rule
 
 Copy the template's config files into the sibling **nearly verbatim**. Only two
 things are allowed to differ:
@@ -27,21 +33,26 @@ things are allowed to differ:
 Everything else — tool versions, hooks, workflows, lint and tool config — is meant
 to be identical. When in doubt, copy it.
 
-## Managed files
-
-`.mise/config.toml`, `package.json`, `pnpm-workspace.yaml`, `.pre-commit-config.yaml`,
-`.github/workflows/*.yml`, `justfile`, `.fallowrc.json`, `.markdownlint.jsonc`,
-`.markdownlint-cli2.jsonc`, `.yamllint.yaml`, `scripts/configure-github.sh`.
-
 A sibling not yet on Vite+ needs two prerequisite tasks before any others: add
 `"npm:vite-plus"` to `.mise/config.toml`, then run `vp migrate`.
 
+## Version policy
+
+@.claude/includes/sync-version-policy.md
+
+Also check npm-managed tooling with `npm outdated` (and `vp` where applicable).
+
+## Projects
+
+`$ARGUMENTS` is a project name, `all`, or empty (treated as `all`).
+
+@.claude/includes/sync-project-list.md
+
 ## Stale and conflicting tool configs
 
-Siblings synced from older template versions may carry config files for tools the
-template no longer uses. These conflict with the current toolchain (e.g. a leftover
-Prettier config fighting oxfmt over formatting). In each sibling, scan for configs
-belonging to tools the template does not use, including hidden dotfiles:
+@.claude/includes/sync-stale-configs.md
+
+Suspect configs for this template's toolchain:
 
 - **Formatting (template uses oxfmt):** `.prettierrc*` (`.prettierrc`,
   `.prettierrc.json`, `.prettierrc.json5`, `.prettierrc.yaml`, `.prettierrc.js`, …),
@@ -52,33 +63,11 @@ belonging to tools the template does not use, including hidden dotfiles:
 - **General:** any other dot-config, `package.json` script, devDependency, or
   pre-commit hook referencing a tool the template has dropped.
 
-A quick scan: `ls -a` the sibling root and compare every tool config against the
-template's file list; anything the template lacks is suspect.
-
-**Never delete these proactively.** They may be intentional per-project choices.
-Instead, alert the user: list each suspect file in the sync report and generate a
-task that names the file, explains the conflict (e.g. "stale Prettier config
-conflicts with oxfmt"), and asks the user to confirm removal.
-
 ## Default git test
 
-Each sibling must have a `default` git test registered so `j test-branch` works.
-Run `git test list` in the sibling — the command must match the template's:
-
-```
-just --global-justfile _check-local-modifications && (should-skip-commit || just precommit) && just --global-justfile _check-local-modifications
-```
-
-If missing or different, generate a task to register it:
-
-```
-git test add --test default 'just --global-justfile _check-local-modifications && (should-skip-commit || just precommit) && just --global-justfile _check-local-modifications' --forget
-```
+@.claude/includes/sync-git-test.md
 
 ## Workflow
-
-`$ARGUMENTS` is a project name, `all`, or empty (treated as `all`). Read the sibling
-list from `.llm/sync-projects.md` (gitignored, machine-specific).
 
 1. **Refresh the template.** Check for newer tool versions (`mise ls-remote`,
    `npm outdated`) and update the template first if it is behind.
@@ -89,26 +78,25 @@ list from `.llm/sync-projects.md` (gitignored, machine-specific).
 4. **Generate tasks.** For each sibling, compare against the template and write
    tasks into its `.llm/todo.md` that bring each out-of-sync file in line.
 
-**Stale task removal:** every sync task ends with a `Source: ~/projects/typescript-template`
-line. Before appending, remove existing task blocks containing that marker; leave
-all other tasks untouched.
+## Creating tasks
 
-## Task format
+@.claude/includes/sync-task-dedup.md
 
-One task per out-of-sync file. Name the file, say to match the template, end with
-the `Source:` line. Tasks with prerequisites (anything depending on `vp migrate`)
-must say so.
+Marker for this template: `Source: ~/projects/typescript-template`
+
+### Task templates
+
+**Sync a managed file:**
 
 ```
-- [ ] Sync .pre-commit-config.yaml with the template
-      Match ~/projects/typescript-template/.pre-commit-config.yaml.
-      Keep project-specific excludes.
-      Source: ~/projects/typescript-template
+Sync .pre-commit-config.yaml with the template
+  Match ~/projects/typescript-template/.pre-commit-config.yaml.
+  Keep project-specific excludes.
+  Source: ~/projects/typescript-template
 ```
+
+Tasks with prerequisites (anything depending on `vp migrate`) must say so.
 
 ## Report
 
-After syncing, report: template versions and any template updates made; anything
-pulled in from siblings; number of siblings synced and tasks created; and every
-stale or conflicting tool config found, per sibling, with a note that the user
-should confirm removal.
+@.claude/includes/sync-report.md
