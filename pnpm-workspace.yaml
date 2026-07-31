@@ -1,5 +1,8 @@
 onlyBuiltDependencies:
   - esbuild
+minimumReleaseAge: 1440
+minimumReleaseAgeStrict: true
+minimumReleaseAgeIgnoreMissingTime: false
 catalog:
   vite: npm:@voidzero-dev/vite-plus-core@0.2.5
   vitest: npm:@voidzero-dev/vite-plus-test@0.1.24
