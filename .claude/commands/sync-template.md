@@ -17,6 +17,13 @@ Template path: !`pwd`
 `.github/workflows/*.yml`, `justfile`, `.fallowrc.json`, `.markdownlint.jsonc`,
 `.markdownlint-cli2.jsonc`, `.yamllint.yaml`, `scripts/configure-github.sh`.
 
+### Ownership
+
+For projects listed by this template, this command owns every managed path above.
+`project-template` may update the baseline in this template, but it must delegate
+overlapping paths in TypeScript projects to this command. When the templates
+intentionally differ, the TypeScript version is authoritative for those projects.
+
 ### The rule
 
 Copy the template's config files into the sibling **nearly verbatim**. Only two
