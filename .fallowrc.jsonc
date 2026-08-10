@@ -9,7 +9,6 @@
 	// this ignoreDependencies block and let fallow flag genuinely unused deps.
 	"ignoreDependencies": [
 		"@chromatic-com/storybook",
-		"@sentry/vite-plugin",
 		"@storybook/addon-a11y",
 		"@storybook/addon-docs",
 		"@storybook/addon-onboarding",
