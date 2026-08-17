@@ -17,6 +17,8 @@ Template path: !`pwd`
 `.github/workflows/*.yml`, `justfile`, `.fallowrc.json`, `.markdownlint.jsonc`,
 `.markdownlint-cli2.jsonc`, `.yamllint.yaml`, `scripts/configure-github.sh`.
 
+- `scripts/audit-just-options.py` — repository-wide `just` option policy audit
+
 ### Ownership
 
 For projects listed by this template, this command owns every managed path above.
@@ -74,6 +76,10 @@ Suspect configs for this template's toolchain:
 
 @.claude/includes/sync-git-test.md
 
+## Just recipe options
+
+@.claude/includes/sync-just-options.md
+
 ## Workflow
 
 1. **Refresh the template.** Check for newer tool versions (`mise ls-remote`,
@@ -82,7 +88,9 @@ Suspect configs for this template's toolchain:
    template, ask the user, update the template, then propagate.
 3. **Scan for stale configs.** For each sibling, run the stale-config scan above
    before generating tooling tasks. Alert on findings; do not delete.
-4. **Generate tasks.** For each sibling, compare against the template and write
+4. **Audit recipe options.** Run the shared `just` option audit against each project
+   and create one project-scoped task for every failure.
+5. **Generate tasks.** For each sibling, compare against the template and write
    tasks into its `.llm/todo.md` that bring each out-of-sync file in line.
 
 ## Creating tasks
