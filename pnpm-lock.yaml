@@ -38,11 +38,11 @@ importers:
         specifier: ^10.5.5
         version: 10.5.5(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(esbuild@0.28.1)(storybook@10.5.8(@types/react@19.2.18)(react@19.2.8)(vite-plus@0.2.8(@types/node@26.1.2)(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(esbuild@0.28.1)(jiti@2.7.0)(jsdom@30.0.1)(typescript@7.0.2)))
       '@storybook/addon-onboarding':
-        specifier: ^10.5.5
-        version: 10.5.5(storybook@10.5.8(@types/react@19.2.18)(react@19.2.8)(vite-plus@0.2.8(@types/node@26.1.2)(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(esbuild@0.28.1)(jiti@2.7.0)(jsdom@30.0.1)(typescript@7.0.2)))
+        specifier: ^10.5.7
+        version: 10.5.7(storybook@10.5.8(@types/react@19.2.18)(react@19.2.8)(vite-plus@0.2.8(@types/node@26.1.2)(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(esbuild@0.28.1)(jiti@2.7.0)(jsdom@30.0.1)(typescript@7.0.2)))
       '@storybook/addon-vitest':
         specifier: ^10.5.5
-        version: 10.5.5(@vitest/browser@4.1.10(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(vitest@4.1.10))(@vitest/runner@4.1.10)(react@19.2.8)(storybook@10.5.8(@types/react@19.2.18)(react@19.2.8)(vite-plus@0.2.8(@types/node@26.1.2)(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(esbuild@0.28.1)(jiti@2.7.0)(jsdom@30.0.1)(typescript@7.0.2)))(vitest@4.1.10)
+        version: 10.5.5(@vitest/browser@4.1.10(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(vitest@4.1.10))(@vitest/runner@4.1.10)(react@19.2.8)(storybook@10.5.8(@types/react@19.2.18)(react@19.2.8)(vite-plus@0.2.8(@types/node@26.1.2)(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(esbuild@0.28.1)(jiti@2.7.0)(jsdom@30.0.1)(typescript@7.0.2)))(vitest@4.1.10(@types/node@26.1.2)(@vitest/browser-preview@4.1.10)(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(jsdom@30.0.1))
       '@storybook/react-vite':
         specifier: ^10.5.5
         version: 10.5.5(@types/react-dom@19.2.4(@types/react@19.2.18))(@types/react@19.2.18)(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(esbuild@0.28.1)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)(storybook@10.5.8(@types/react@19.2.18)(react@19.2.8)(vite-plus@0.2.8(@types/node@26.1.2)(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(esbuild@0.28.1)(jiti@2.7.0)(jsdom@30.0.1)(typescript@7.0.2)))(supports-color@8.1.1)(typescript@7.0.2)
@@ -1445,10 +1445,10 @@ packages:
       '@types/react':
         optional: true
 
-  '@storybook/addon-onboarding@10.5.5':
-    resolution: {integrity: sha512-QF8mn5QDJdY1LI/RqpxlruaETrPspVFVMRl0oFLSYOIQENIKLY+9Jy48zBkEeiy2vVY8aTNeWdkrnFpDc9G2qA==}
+  '@storybook/addon-onboarding@10.5.7':
+    resolution: {integrity: sha512-GDssSoWmmGnz6OnUvAofMcrUuTMD53Y2rnbshjXvhtPnjKw4dufXFjo6C7yZQ6vyoNzTS9HyQwCHlxlhyCKJjQ==}
     peerDependencies:
-      storybook: ^10.5.5
+      storybook: ^10.5.7
 
   '@storybook/addon-vitest@10.5.5':
     resolution: {integrity: sha512-Ymq9ErkSkYiIDuqpJ2+hE5GCQ5J6TCLOWhutqArvwaeAO+HAibM82XNExpJ1/kvPqk9y961GDPkv2W15I88JIw==}
@@ -5931,11 +5931,11 @@ snapshots:
       - vite
       - webpack
 
-  '@storybook/addon-onboarding@10.5.5(storybook@10.5.8(@types/react@19.2.18)(react@19.2.8)(vite-plus@0.2.8(@types/node@26.1.2)(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(esbuild@0.28.1)(jiti@2.7.0)(jsdom@30.0.1)(typescript@7.0.2)))':
+  '@storybook/addon-onboarding@10.5.7(storybook@10.5.8(@types/react@19.2.18)(react@19.2.8)(vite-plus@0.2.8(@types/node@26.1.2)(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(esbuild@0.28.1)(jiti@2.7.0)(jsdom@30.0.1)(typescript@7.0.2)))':
     dependencies:
       storybook: 10.5.8(@types/react@19.2.18)(react@19.2.8)(vite-plus@0.2.8(@types/node@26.1.2)(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(esbuild@0.28.1)(jiti@2.7.0)(jsdom@30.0.1)(typescript@7.0.2))
 
-  '@storybook/addon-vitest@10.5.5(@vitest/browser@4.1.10(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(vitest@4.1.10))(@vitest/runner@4.1.10)(react@19.2.8)(storybook@10.5.8(@types/react@19.2.18)(react@19.2.8)(vite-plus@0.2.8(@types/node@26.1.2)(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(esbuild@0.28.1)(jiti@2.7.0)(jsdom@30.0.1)(typescript@7.0.2)))(vitest@4.1.10)':
+  '@storybook/addon-vitest@10.5.5(@vitest/browser@4.1.10(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(vitest@4.1.10))(@vitest/runner@4.1.10)(react@19.2.8)(storybook@10.5.8(@types/react@19.2.18)(react@19.2.8)(vite-plus@0.2.8(@types/node@26.1.2)(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(esbuild@0.28.1)(jiti@2.7.0)(jsdom@30.0.1)(typescript@7.0.2)))(vitest@4.1.10(@types/node@26.1.2)(@vitest/browser-preview@4.1.10)(@voidzero-dev/vite-plus-core@0.2.8(@types/node@26.1.2)(esbuild@0.28.1)(jiti@2.7.0)(typescript@7.0.2))(jsdom@30.0.1))':
     dependencies:
       '@storybook/global': 5.0.0
       '@storybook/icons': 2.1.0(react@19.2.8)
