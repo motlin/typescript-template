@@ -25,11 +25,13 @@ updates:
           - "@vitest/*"
           - "@testing-library/*"
           - "playwright"
+      # Listed explicitly rather than as "react-*", which also matched the
+      # firebase group's "react-firebase-*" and left the winning group ambiguous.
       react-ecosystem:
         patterns:
           - "react"
+          - "react-dom"
           - "@types/react*"
-          - "react-*"
       tanstack:
         patterns:
           - "@tanstack/*"
