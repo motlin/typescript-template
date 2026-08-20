@@ -25,6 +25,14 @@ updates:
           - "@vitest/*"
           - "@testing-library/*"
           - "playwright"
+      # Storybook ships its core, addons and eslint plugin on one release train
+      # (all at 10.5.7), so they have to move together. @chromatic-com/storybook
+      # is deliberately excluded: different vendor, independent versioning.
+      storybook:
+        patterns:
+          - "storybook"
+          - "@storybook/*"
+          - "eslint-plugin-storybook"
       # Listed explicitly rather than as "react-*", which also matched the
       # firebase group's "react-firebase-*" and left the winning group ambiguous.
       react-ecosystem:
