@@ -100,6 +100,10 @@ Suspect configs for this template's toolchain:
 - **General:** any other dot-config, `package.json` script, devDependency, or
   pre-commit hook referencing a tool the template has dropped.
 
+## Git ignore files
+
+@.claude/includes/sync-gitignore.md
+
 ## Default git test
 
 @.claude/includes/sync-git-test.md
@@ -116,9 +120,12 @@ Suspect configs for this template's toolchain:
    template, ask the user, update the template, then propagate.
 3. **Scan for stale configs.** For each sibling, run the stale-config scan above
    before generating tooling tasks. Alert on findings; do not delete.
-4. **Audit recipe options.** Run the shared `just` option audit against each project
+4. **Scan ignore files.** For each project, run the `.gitignore` / `.git/info/exclude`
+   scan above. Promote per-clone excludes every peer needs; question only hand-added
+   dead entries. Alert on findings; do not edit either file.
+5. **Audit recipe options.** Run the shared `just` option audit against each project
    and create one project-scoped task for every failure.
-5. **Generate tasks.** For each sibling, compare against the template and audit
+6. **Generate tasks.** For each sibling, compare against the template and audit
    runtime process naming. Write tasks into its `.llm/todo.md` for each out-of-sync
    managed file and Node entrypoint that needs a recognizable process title.
 
