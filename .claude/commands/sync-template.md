@@ -1,5 +1,5 @@
 ---
-description: Sync tool versions from this template to sibling TypeScript projects
+description: Sync tooling and Node process names from this template to sibling TypeScript projects
 argument-hint: [project-name|all]
 ---
 
@@ -7,7 +7,7 @@ argument-hint: [project-name|all]
 
 This project is the source of truth — a working exemplar — for TypeScript/Node
 project configuration. Syncing a sibling means making its config files match this
-template's.
+template's and carrying over its Node process-naming convention.
 
 Template path: !`pwd`
 
@@ -44,6 +44,34 @@ to be identical. When in doubt, copy it.
 
 A sibling not yet on Vite+ needs two prerequisite tasks before any others: add
 `"npm:vite-plus"` to `.mise/config.toml`, then run `vp migrate`.
+
+## Runtime process naming
+
+In addition to the managed config files, sync recognizable names for each project's
+long-running Node processes. The template sets this in `vite.config.ts`:
+
+```ts
+process.title = "typescript-template";
+```
+
+For each sibling, inventory its Node startup entrypoints: Vite dev/preview config,
+servers, bots, and workers. Set `process.title` early in the process that does the
+work, before starting its main loop. Use the unscoped `package.json` project name
+instead of `typescript-template`; add a role suffix when a project has multiple
+long-running processes, such as `example-app-worker`. Preserve an existing
+recognizable project-specific title, such as `example-app-bot`.
+
+This sync owns only the process-title assignment in those entrypoints, not the
+surrounding application code or the rest of `vite.config.ts`. Do not add it to
+browser entrypoints or shared library modules. Projects without a Node runtime
+entrypoint are not applicable; do not invent an application entrypoint for them.
+
+Include these entrypoints in the sync inventory and coverage check. For each missing,
+generic, or leftover template title, create a task naming the exact file and intended title,
+using the same Source marker and deduplication rules as managed-file tasks. Verify
+the name on a safe dev or diagnostic launch with `ps` or Activity Monitor; note that
+an already-running process needs a restart to load the change. Do not start or
+restart production services just to verify a title.
 
 ## Version policy
 
@@ -90,8 +118,9 @@ Suspect configs for this template's toolchain:
    before generating tooling tasks. Alert on findings; do not delete.
 4. **Audit recipe options.** Run the shared `just` option audit against each project
    and create one project-scoped task for every failure.
-5. **Generate tasks.** For each sibling, compare against the template and write
-   tasks into its `.llm/todo.md` that bring each out-of-sync file in line.
+5. **Generate tasks.** For each sibling, compare against the template and audit
+   runtime process naming. Write tasks into its `.llm/todo.md` for each out-of-sync
+   managed file and Node entrypoint that needs a recognizable process title.
 
 ## Creating tasks
 
