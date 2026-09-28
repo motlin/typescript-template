@@ -7,7 +7,6 @@
 		"preinstall": "npx only-allow pnpm",
 		"dev": "vp dev",
 		"preview": "vp preview",
-		"check": "vp check",
 		"build": "vp build",
 		"oxlint": "vp lint . --fix",
 		"oxlint:ci": "vp lint . --format github",
