@@ -24,6 +24,12 @@ export default defineConfig({
 					tabWidth: 2,
 				},
 			},
+			{
+				files: ["**/*.md"],
+				options: {
+					printWidth: 320,
+				},
+			},
 		],
 	},
 	run: {
