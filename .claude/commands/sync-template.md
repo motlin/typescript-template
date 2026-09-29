@@ -11,9 +11,10 @@ Template path: !`pwd`
 
 ## Managed files
 
-`.mise/config.toml`, `package.json`, `pnpm-workspace.yaml`, `.pre-commit-config.yaml`, `.github/workflows/*.yml`, `justfile`, `.fallowrc.json`, `.markdownlint.jsonc`, `.markdownlint-cli2.jsonc`, `.yamllint.yaml`, `scripts/configure-github.sh`.
+`.mise/config.toml`, `package.json`, `pnpm-workspace.yaml`, `.pre-commit-config.yaml`, `.github/workflows/*.yml`, `justfile`, `.fallowrc.jsonc`, `.markdownlint.jsonc`, `.markdownlint-cli2.jsonc`, `.yamllint.yaml`, `scripts/configure-github.sh`.
 
 - `scripts/audit-just-options.py` — repository-wide `just` option policy audit
+- `vite.config.ts` — only its `fmt`, `lint`, and `run.tasks` blocks; project-specific lint `ignorePatterns`, lint overrides, and extra tasks are placeholders. Plugins, `build`, `server`, and other Vite options belong to the application.
 
 ### Ownership
 
@@ -24,7 +25,7 @@ For projects listed by this template, this command owns every managed path above
 Copy the template's config files into the sibling **nearly verbatim**. Only two things are allowed to differ:
 
 - **Placeholders** — project `name`, `version`, `description`, the application's own dependencies and `justfile` recipes, per-project ignore lists, and `pnpm-workspace.yaml` `allowBuilds` entries (each is a per-project security decision — never copy one in without checking the sibling's dependency tree).
-- **Blocks labelled `TEMPLATE-SPECIFIC`** — these exist only because the template has no application source (e.g. the `ignoreDependencies` block in `.fallowrc.json`). Drop them from siblings.
+- **Blocks labelled `TEMPLATE-SPECIFIC`** — these exist only because the template has no application source (e.g. the `ignoreDependencies` block in `.fallowrc.jsonc`). Drop them from siblings.
 
 Everything else — tool versions, hooks, workflows, lint and tool config — is meant to be identical. When in doubt, copy it.
 
@@ -40,7 +41,7 @@ process.title = "typescript-template";
 
 For each sibling, inventory its Node startup entrypoints: Vite dev/preview config, servers, bots, and workers. Set `process.title` early in the process that does the work, before starting its main loop. Use the unscoped `package.json` project name instead of `typescript-template`; add a role suffix when a project has multiple long-running processes, such as `example-app-worker`. Preserve an existing recognizable project-specific title, such as `example-app-bot`.
 
-This sync owns only the process-title assignment in those entrypoints, not the surrounding application code or the rest of `vite.config.ts`. Do not add it to browser entrypoints or shared library modules. Projects without a Node runtime entrypoint are not applicable; do not invent an application entrypoint for them.
+This sync owns only the process-title assignment in those entrypoints, not the surrounding application code or the `vite.config.ts` options outside the managed blocks above. Do not add it to browser entrypoints or shared library modules. Projects without a Node runtime entrypoint are not applicable; do not invent an application entrypoint for them.
 
 Include these entrypoints in the sync inventory and coverage check. For each missing, generic, or leftover template title, create a task naming the exact file and intended title, using the same Source marker and deduplication rules as managed-file tasks. Verify the name on a safe dev or diagnostic launch with `ps` or Activity Monitor; note that an already-running process needs a restart to load the change. Do not start or restart production services just to verify a title.
 
