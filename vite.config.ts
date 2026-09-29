@@ -11,6 +11,8 @@ export default defineConfig({
 		useTabs: true,
 		tabWidth: 4,
 		printWidth: 120,
+		proseWrap: "never",
+		embeddedLanguageFormatting: "off",
 		bracketSpacing: false,
 		trailingComma: "all",
 		arrowParens: "always",
