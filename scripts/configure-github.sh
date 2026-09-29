@@ -126,7 +126,7 @@ if [[ "$UPDATE_PROTECTION" == "true" ]]; then
 
     # A 403 means a private repo without GitHub Pro/Team, where branch protection is a paid
     # feature. Warn and continue so the remaining settings still apply.
-    if cat << EOF | gh api "repos/${REPO}/branches/${BRANCH}/protection" --method PUT --input - > /dev/null
+    if PROTECTION_ERROR=$(gh api "repos/${REPO}/branches/${BRANCH}/protection" --method PUT --input - 2>&1 > /dev/null << EOF
 {
   "required_status_checks": {"strict": $BP_STRICT, "contexts": $BP_CONTEXTS},
   "enforce_admins": $BP_ENFORCE_ADMINS,
@@ -136,10 +136,13 @@ if [[ "$UPDATE_PROTECTION" == "true" ]]; then
   "allow_force_pushes": $BP_ALLOW_FORCE_PUSHES
 }
 EOF
-    then
+    ); then
         echo "  Branch protection updated."
+    elif [[ "$PROTECTION_ERROR" == *"HTTP 403"* ]]; then
+        echo "  WARNING: branch protection returned 403 (private repo without GitHub Pro/Team?). Skipping."
     else
-        echo "  WARNING: could not update branch protection (private repo without GitHub Pro/Team?). Skipping."
+        echo "$PROTECTION_ERROR" >&2
+        exit 1
     fi
 fi
 
