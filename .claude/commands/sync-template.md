@@ -13,8 +13,9 @@ Template path: !`pwd`
 
 `.mise/config.toml`, `package.json`, `pnpm-workspace.yaml`, `.pre-commit-config.yaml`, `.github/workflows/*.yml`, `justfile`, `.fallowrc.jsonc`, `.markdownlint.jsonc`, `.markdownlint-cli2.jsonc`, `.yamllint.yaml`, `scripts/configure-github.sh`.
 
-- `scripts/audit-just-options.py` — repository-wide `just` option policy audit
 - `vite.config.ts` — only its `fmt`, `lint`, and `run.tasks` blocks; project-specific lint `ignorePatterns`, lint overrides, and extra tasks are placeholders. Plugins, `build`, `server`, and other Vite options belong to the application.
+
+`scripts/audit-just-options.py` and its `audit-just-options` justfile recipe stay in the template. The sync runs the audit against each sibling from here; do not copy the script or the recipe into siblings.
 
 ### Ownership
 
