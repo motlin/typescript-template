@@ -30,7 +30,7 @@ Copy the template's config files into the sibling **nearly verbatim**. Only two 
 
 Everything else — tool versions, hooks, workflows, lint and tool config — is meant to be identical. When in doubt, copy it.
 
-A sibling not yet on Vite+ needs two prerequisite tasks before any others: add `"npm:vite-plus"` to `.mise/config.toml`, then run `vp migrate`.
+A sibling not yet on Vite+ needs two prerequisite tasks before any others: add `vite-plus` as a project devDependency (never a global mise `npm:vite-plus` entry), then run `pnpm exec vp migrate`.
 
 ## Runtime process naming
 

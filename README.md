@@ -5,7 +5,7 @@ A standardized TypeScript project template built on [Vite+](https://viteplus.dev
 ## Getting started
 
 ```bash
-vp install
+pnpm install
 just dev
 ```
 

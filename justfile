@@ -5,10 +5,13 @@ default:
 
 ci := env("CI", "")
 
+# vp comes only from the project-local vite-plus devDependency, never from a global install
+export PATH := justfile_directory() / "node_modules/.bin" + ":" + env("PATH")
+
 # Install dependencies
 [group('setup')]
 install:
-    vp install
+    pnpm install
     vp fmt CLAUDE.md
 
 # Run dev server
