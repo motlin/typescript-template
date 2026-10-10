@@ -37,7 +37,7 @@ test *args: install
 
 # Type-check the project
 typecheck: install
-    vp run --cache typecheck
+    vp run typecheck
 
 # Build the project
 build: install
