@@ -49,8 +49,17 @@ export default defineConfig({
 	},
 	lint: {
 		plugins: [],
+		jsPlugins: [
+			{
+				name: "vite-plus",
+				specifier: "vite-plus/oxlint-plugin",
+			},
+		],
 		categories: {
 			correctness: "off",
+		},
+		rules: {
+			"vite-plus/prefer-vite-plus-imports": "error",
 		},
 		env: {
 			builtin: true,
