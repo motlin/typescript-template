@@ -12,7 +12,7 @@
 		"oxlint:ci": "vp lint . --format github",
 		"fmt": "vp fmt",
 		"fmt:ci": "vp fmt --check",
-		"fallow": "fallow fix --yes",
+		"fallow": "fallow fix --yes --no-create-config",
 		"fallow:ci": "fallow dead-code",
 		"typecheck": "tsc --noEmit",
 		"test": "node node_modules/vitest/dist/cli.js",

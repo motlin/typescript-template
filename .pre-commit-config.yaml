@@ -50,7 +50,7 @@ repos:
         types: [markdown]
       - id: fallow
         name: fallow
-        entry: pnpm exec vp exec fallow fix --base HEAD --yes --no-create-config
+        entry: pnpm run fallow --base HEAD
         language: system
         pass_filenames: false
         types: [file]
