@@ -15,6 +15,7 @@
 		"@storybook/addon-vitest",
 		"@storybook/test-runner",
 		"@tanstack/react-query-devtools",
+		"eslint",
 		"eslint-plugin-storybook",
 		"jiti",
 		"lucide-react",
