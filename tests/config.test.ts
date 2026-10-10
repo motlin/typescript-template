@@ -1,4 +1,4 @@
-import {describe, it, expect, beforeEach, vi} from "vitest";
+import {describe, it, expect, beforeEach, vi} from "vite-plus/test";
 import {loadConfig, validateConfig, type Config} from "../src/config.js";
 
 describe("Config module", () => {
