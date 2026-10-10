@@ -39,13 +39,6 @@ repos:
         language: system
         files: '(?i)(^|/)\.?justfile$|\.just$'
         types: [file]
-      # Runs before oxfmt: fallow fix rewrites package.json with 2-space indentation, which vp fmt must re-tab.
-      - id: fallow
-        name: fallow
-        entry: pnpm exec vp exec fallow fix --base HEAD --yes --no-create-config
-        language: system
-        pass_filenames: false
-        types: [file]
       - id: oxfmt
         name: vp fmt
         entry: pnpm exec vp fmt --no-error-on-unmatched-pattern
@@ -55,3 +48,9 @@ repos:
         entry: pnpm exec vp exec markdownlint-cli2
         language: system
         types: [markdown]
+      - id: fallow
+        name: fallow
+        entry: pnpm exec vp exec fallow fix --base HEAD --yes --no-create-config
+        language: system
+        pass_filenames: false
+        types: [file]
