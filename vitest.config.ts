@@ -12,6 +12,7 @@ export default mergeConfig(
 			pool: "threads",
 			isolate: true,
 			fsModuleCache: true,
+			silent: "passed-only",
 		},
 	}),
 );
