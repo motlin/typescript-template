@@ -354,6 +354,7 @@ export default defineConfig({
 			},
 		},
 		sourcemap: true,
+		reportCompressedSize: false,
 	},
 	server: {
 		port: 3000,
