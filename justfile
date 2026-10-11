@@ -65,9 +65,16 @@ audit-just-options:
 
 # Run all pre-commit checks
 [arg("quick", long, value="true", help="Skip tests")]
-verify quick="": check build fallow _verify-pre-commit
-    {{ if quick != "true" { "just test" } else { "true" } }}
+verify quick="": check fallow (_verify-read-only quick)
     @echo "All pre-commit checks passed!"
+
+# Run verify's read-only stages concurrently, after the fixers finish
+[parallel]
+_verify-read-only quick="": build _verify-pre-commit (_verify-test quick)
+
+# Run tests unless quick
+_verify-test quick="": install
+    {{ if quick != "true" { "vp run --cache test:run" } else { "true" } }}
 
 # Run pre-commit hooks except the ones `check` and `fallow` already ran
 _verify-pre-commit: install
