@@ -65,9 +65,13 @@ audit-just-options:
 
 # Run all pre-commit checks
 [arg("quick", long, value="true", help="Skip tests")]
-verify quick="": check build fallow pre-commit
+verify quick="": check build fallow _verify-pre-commit
     {{ if quick != "true" { "just test" } else { "true" } }}
     @echo "All pre-commit checks passed!"
+
+# Run pre-commit hooks except the ones `check` and `fallow` already ran
+_verify-pre-commit: install
+    SKIP=oxfmt,fallow pre-commit run --all-files
 
 # Deprecated alias for `verify`
 [arg("quick", long, value="true", help="Skip tests")]
