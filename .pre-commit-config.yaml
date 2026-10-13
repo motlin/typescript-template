@@ -39,6 +39,12 @@ repos:
         language: system
         files: '(?i)(^|/)\.?justfile$|\.just$'
         types: [file]
+      - id: fallow
+        name: fallow
+        entry: pnpm run fallow --base HEAD
+        language: system
+        pass_filenames: false
+        types: [file]
       - id: oxfmt
         name: vp fmt
         entry: pnpm exec vp fmt --no-error-on-unmatched-pattern
@@ -54,9 +60,3 @@ repos:
         entry: pnpm exec vp exec markdownlint-cli2
         language: system
         types: [markdown]
-      - id: fallow
-        name: fallow
-        entry: pnpm run fallow --base HEAD
-        language: system
-        pass_filenames: false
-        types: [file]
