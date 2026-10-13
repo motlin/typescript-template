@@ -48,7 +48,7 @@ export default defineConfig({
 		},
 	},
 	lint: {
-		plugins: ["typescript", "unicorn", "oxc", "import", "react", "vitest", "promise", "node"],
+		plugins: ["typescript", "unicorn", "oxc", "import", "react", "vitest", "promise", "node", "jsx-a11y"],
 		jsPlugins: [
 			{
 				name: "vite-plus",
@@ -58,6 +58,7 @@ export default defineConfig({
 		categories: {
 			correctness: "error",
 			suspicious: "error",
+			perf: "error",
 		},
 		rules: {
 			"vite-plus/prefer-vite-plus-imports": "error",
@@ -140,6 +141,7 @@ export default defineConfig({
 					"@typescript-eslint/no-invalid-void-type": "error",
 					"@typescript-eslint/no-namespace": "error",
 					"@typescript-eslint/no-non-null-asserted-nullish-coalescing": "error",
+					"@typescript-eslint/no-explicit-any": "error",
 					"@typescript-eslint/no-non-null-assertion": "error",
 					"@typescript-eslint/no-require-imports": "error",
 					"@typescript-eslint/no-unsafe-function-type": "error",
@@ -216,6 +218,7 @@ export default defineConfig({
 			{
 				files: ["**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}"],
 				rules: {
+					"@typescript-eslint/no-explicit-any": "off",
 					"@typescript-eslint/no-non-null-assertion": "off",
 					"@typescript-eslint/no-unsafe-type-assertion": "off",
 					"@typescript-eslint/no-unsafe-assignment": "off",
