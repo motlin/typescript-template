@@ -275,7 +275,7 @@ export default defineConfig({
 					"@typescript-eslint/no-unsafe-call": "error",
 					"@typescript-eslint/no-unsafe-argument": "error",
 					"@typescript-eslint/no-unnecessary-condition": ["error", {allowConstantLoopConditions: true}],
-					"@typescript-eslint/strict-boolean-expressions": "error",
+					"@typescript-eslint/strict-boolean-expressions": "off", // Opted out: it forces `=== true` noise.
 					"react-hooks/rules-of-hooks": "error",
 					"react-hooks/exhaustive-deps": "error",
 					eqeqeq: ["error", "smart"],
