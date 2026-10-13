@@ -11,6 +11,9 @@ updates:
       default-days: 7
     labels:
       - "dependencies"
+    # Renovate's "vite-plus monorepo" group owns vite-plus so its vite alias moves with it.
+    ignore:
+      - dependency-name: "vite-plus"
     # Only group dependencies that must move in lockstep. typescript was a
     # single-package group, so it gets its own PR either way -- dropped so a
     # breaking bump is labelled by name rather than hidden behind a group.

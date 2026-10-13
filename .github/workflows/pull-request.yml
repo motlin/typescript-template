@@ -60,11 +60,6 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "github-actions@github.com"
 
-      - name: Align the vite alias with vite-plus
-        run: |
-          VITE_PLUS=$(sed -n 's/^  vite-plus: //p' pnpm-workspace.yaml)
-          sed -i "s|^  vite: npm:@voidzero-dev/vite-plus-core@.*|  vite: npm:@voidzero-dev/vite-plus-core@${VITE_PLUS}|" pnpm-workspace.yaml
-
       - name: Run vp run check --fix
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
