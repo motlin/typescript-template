@@ -53,9 +53,7 @@ export function validateConfig(config: Config): void {
 		throw new Error(`Invalid port: ${config.port}`);
 	}
 
-	try {
-		new URL(config.apiUrl);
-	} catch {
+	if (!URL.canParse(config.apiUrl)) {
 		throw new Error(`Invalid API URL: ${config.apiUrl}`);
 	}
 }

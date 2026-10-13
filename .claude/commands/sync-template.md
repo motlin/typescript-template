@@ -13,7 +13,7 @@ Template path: !`pwd`
 
 `.mise/config.toml`, `package.json`, `pnpm-workspace.yaml`, `.pre-commit-config.yaml`, `.github/workflows/*.yml`, `justfile`, `.fallowrc.jsonc`, `.markdownlint.jsonc`, `.markdownlint-cli2.jsonc`, `.yamllint.yaml`, `scripts/configure-github.sh`, `scripts/check-action-pins.mjs`, `scripts/check-action-pins.test.mjs`.
 
-- `vite.config.ts` — only its `fmt`, `lint`, and `run.tasks` blocks; project-specific lint `ignorePatterns`, lint overrides, and extra tasks are placeholders. Plugins, `build`, `server`, and other Vite options belong to the application.
+- `vite.config.ts` — only its `fmt`, `lint`, and `run.tasks` blocks. Copy the `lint` block whole: top-level `plugins`, `categories`, `rules`, `env`, `options`, and every template override, including the per-language `**/*.{js,jsx}`, `**/*.{ts,tsx}`, and test overrides that carry the hand-picked rules. Project-specific `ignorePatterns` entries, extra overrides for the project's own files, and extra tasks are placeholders. Plugins, `build`, `server`, and other Vite options belong to the application.
 - `.github/dependabot.yml` — schedule, cooldown, limits, labels, commit-message, and the `github-actions` entry match the template. npm `groups` are placeholders: keep the template's groups for packages the project uses and add groups for its own lockstep dependencies.
 - `.gitignore` — the template's entries are the baseline every project carries; entries for the project's own build output and generated files are placeholders. The [Git ignore files](#git-ignore-files) scan still governs dead or misplaced entries.
 
