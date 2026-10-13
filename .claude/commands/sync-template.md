@@ -11,10 +11,10 @@ Template path: !`pwd`
 
 ## Managed files
 
-`.mise/config.toml`, `package.json`, `pnpm-workspace.yaml`, `.pre-commit-config.yaml`, `.github/workflows/*.yml`, `justfile`, `.fallowrc.jsonc`, `.markdownlint.jsonc`, `.markdownlint-cli2.jsonc`, `.yamllint.yaml`, `scripts/configure-github.sh`, `scripts/check-action-pins.mjs`, `scripts/check-action-pins.test.mjs`.
+`.mise/config.toml`, `package.json`, `pnpm-workspace.yaml`, `.pre-commit-config.yaml`, `.github/workflows/*.yml`, `justfile`, `.fallowrc.jsonc`, `.markdownlint.jsonc`, `.markdownlint-cli2.jsonc`, `.yamllint.yaml`, `renovate.json`, `scripts/configure-github.sh`, `scripts/check-action-pins.mjs`, `scripts/check-action-pins.test.mjs`.
 
 - `vite.config.ts` — only its `fmt`, `lint`, and `run.tasks` blocks. Copy the `lint` block whole: top-level `plugins`, `categories`, `rules`, `env`, `options`, and every template override, including the per-language `**/*.{js,jsx}`, `**/*.{ts,tsx}`, and test overrides that carry the hand-picked rules. Project-specific `ignorePatterns` entries, extra overrides for the project's own files, and extra tasks are placeholders. Plugins, `build`, `server`, and other Vite options belong to the application.
-- `.github/dependabot.yml` — schedule, cooldown, limits, labels, commit-message, and the `github-actions` entry match the template. npm `groups` are placeholders: keep the template's groups for packages the project uses and add groups for its own lockstep dependencies.
+- `.github/dependabot.yml` — schedule, cooldown, limits, labels, commit-message, and the `github-actions` entry match the template. npm `groups` are placeholders: keep the template's groups for packages the project uses and add groups for its own lockstep dependencies. The npm `ignore` entry for `vite-plus` is managed too: Renovate owns vite-plus, so a project carries that ignore only together with the template's `renovate.json`, never one without the other.
 - `.gitignore` — the template's entries are the baseline every project carries; entries for the project's own build output and generated files are placeholders. The [Git ignore files](#git-ignore-files) scan still governs dead or misplaced entries.
 
 `scripts/audit-just-options.py` and its `audit-just-options` justfile recipe stay in the template. The sync runs the audit against each sibling from here; do not copy the script or the recipe into siblings.
