@@ -21,6 +21,6 @@
 		"lucide-react",
 	],
 	"rules": {
-		"unused-dependencies": "warn",
+		"unused-dependencies": "error",
 	},
 }
