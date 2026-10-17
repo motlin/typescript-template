@@ -40,6 +40,12 @@ When a sync changes an action's ref in a managed workflow, bump every other refe
 
 The generated task lists every file to bump, and the report names each file bumped outside the managed workflows.
 
+## mise-action cache input
+
+`jdx/mise-action` caches by default, so `cache: true` does nothing. When syncing workflows into a sibling, remove `cache: true` from every `jdx/mise-action` step, and drop the step's `with:` key if it becomes empty.
+
+Never remove or change `cache: false`. Siblings set it on publish, deploy, and release jobs to satisfy zizmor's cache-poisoning rule; it is a deliberate placeholder, not drift.
+
 ## Runtime process naming
 
 In addition to the managed config files, sync recognizable names for each project's long-running Node processes. The template sets this in `vite.config.ts`:
