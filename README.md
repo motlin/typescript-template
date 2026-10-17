@@ -1,34 +1,20 @@
 # TypeScript Template
 
-A standardized TypeScript project template built on [Vite+](https://viteplus.dev/guide/), the unified toolchain wrapping Vite, Rolldown, Vitest, tsdown, Oxlint, Oxfmt, and Vite Task.
+A template for starting TypeScript projects and for keeping many TypeScript projects configured alike over time.
 
-## Getting started
+## Who it is for
 
-```bash
-pnpm install
-just dev
-```
+Use it if you maintain several TypeScript or Node projects and want them to share one set of tooling instead of drifting apart. New projects start from a copy; existing projects are brought back in line by syncing from this template, so a tooling change made here once reaches every project.
 
-## Commands
+## What it covers
 
-`vp <name>` runs a built-in Vite+ command; `vp run <name>` runs a `package.json` script or a `vite.config.ts` task. The justfile wraps the common ones and installs dependencies first.
+- The [Vite+](https://viteplus.dev/guide/) toolchain for development, building, testing, formatting, linting, and type checking
+- Pinned tool and runtime versions
+- Pre-commit hooks and Markdown, YAML, and justfile linting
+- GitHub Actions workflows for pushes, pull requests, and merge queues
+- Dependency update automation
+- Storybook for UI components
 
-| Command          | Purpose                                             |
-| ---------------- | --------------------------------------------------- |
-| `just dev`       | Start the dev server                                |
-| `just check`     | Format, lint, and type check                        |
-| `just test`      | Run the Vitest suite                                |
-| `just build`     | Build for production                                |
-| `just storybook` | Start Storybook                                     |
-| `just precommit` | Full verification: check, build, fallow, pre-commit |
+## Related templates
 
-## Layout
-
-- `src/` — application source, including Storybook stories
-- `tests/` — Vitest unit tests
-- `.github/workflows/` — CI for pushes, pull requests, and merge queues
-- `.pre-commit-config.yaml` — pre-commit framework hooks
-
-## Troubleshooting
-
-If setup, runtime, or package-manager behavior looks wrong, run `vp env doctor`.
+This template extends the language-agnostic [project-template](https://github.com/motlin/project-template), which holds the configuration every project shares regardless of language. Sibling templates such as [java-template](https://github.com/motlin/java-template) and [rust-template](https://github.com/motlin/rust-template) do the same for their languages. Where this template and project-template differ, this one is authoritative for TypeScript projects.

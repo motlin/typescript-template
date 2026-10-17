@@ -22,3 +22,11 @@ Run `vp toolchain` to show versions and relationships in the active Vite+ releas
 - [ ] If setup, runtime, or package-manager behavior looks wrong, run `vp env doctor` and include its output when asking for help.
 
 <!--VITE PLUS END-->
+
+## Justfile
+
+The justfile wraps the common `vp` commands and installs dependencies first: `just dev`, `just check`, `just test`, `just build`, and `just storybook`. `just verify` runs the full verification (check, build, fallow, pre-commit).
+
+## Syncing siblings
+
+`/sync-template` copies this template's managed config files into sibling TypeScript projects. See `.claude/commands/sync-template.md` for the managed files and the rules.
