@@ -11,7 +11,7 @@ Template path: !`pwd`
 
 ## Managed files
 
-`.mise/config.toml`, `package.json`, `pnpm-workspace.yaml`, `.pre-commit-config.yaml`, `.github/workflows/*.yml`, `justfile`, `.fallowrc.jsonc`, `.markdownlint.jsonc`, `.markdownlint-cli2.jsonc`, `.yamllint.yaml`, `renovate.json`, `scripts/configure-github.sh`, `scripts/check-action-pins.mjs`, `scripts/check-action-pins.test.mjs`.
+`.mise/config.toml`, `package.json`, `pnpm-workspace.yaml`, `.pre-commit-config.yaml`, `.github/workflows/*.yml`, `justfile`, `.fallowrc.jsonc`, `.markdownlint.jsonc`, `.markdownlint-cli2.jsonc`, `.yamllint.yaml`, `renovate.json`, `scripts/configure-github.sh`.
 
 - `vite.config.ts` — only its `fmt`, `lint`, and `run.tasks` blocks. Copy the `lint` block whole: top-level `plugins`, `categories`, `rules`, `env`, `options`, and every template override, including the per-language `**/*.{js,jsx}`, `**/*.{ts,tsx}`, and test overrides that carry the hand-picked rules. Project-specific `ignorePatterns` entries, extra overrides for the project's own files, and extra tasks are placeholders. Plugins, `build`, `server`, and other Vite options belong to the application.
 - `.github/dependabot.yml` — schedule, cooldown, limits, labels, commit-message, and the `github-actions` entry match the template. npm `groups` are placeholders: keep the template's groups for packages the project uses and add groups for its own lockstep dependencies. The npm `ignore` entry for `vite-plus` is managed too: Renovate owns vite-plus, so a project carries that ignore only together with the template's `renovate.json`, never one without the other.
@@ -33,6 +33,12 @@ Copy the template's config files into the sibling **nearly verbatim**. Only two 
 Everything else — tool versions, hooks, workflows, lint and tool config — is meant to be identical. When in doubt, copy it.
 
 A sibling not yet on Vite+ needs two prerequisite tasks before any others: add `vite-plus` as a project devDependency (never a global mise `npm:vite-plus` entry), then run `pnpm exec vp migrate`.
+
+## GitHub Action refs
+
+When a sync changes an action's ref in a managed workflow, bump every other reference to that action in the sibling too. Search for `uses:` of the same `owner/repo` (any subpath, such as `owner/repo/subdir`) across `.github/workflows/*.yml` and `.github/actions/**/action.yml`, including files the template does not manage, and set each one to the same commit SHA and trailing version comment as the template. A project must never pin one action to two refs.
+
+The generated task lists every file to bump, and the report names each file bumped outside the managed workflows.
 
 ## Runtime process naming
 
