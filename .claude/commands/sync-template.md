@@ -11,9 +11,9 @@ Template path: !`pwd`
 
 ## Managed files
 
-`.mise/config.toml`, `package.json`, `pnpm-workspace.yaml`, `.pre-commit-config.yaml`, `.github/workflows/*.yml`, `justfile`, `.fallowrc.jsonc`, `.markdownlint.jsonc`, `.markdownlint-cli2.jsonc`, `.yamllint.yaml`, `renovate.json`, `scripts/configure-github.sh`.
+`.mise/config.toml`, `package.json`, `pnpm-workspace.yaml`, `.pre-commit-config.yaml`, `.github/workflows/*.yml`, `justfile`, `.fallowrc.jsonc`, `.markdownlint.jsonc`, `.markdownlint-cli2.jsonc`, `.yamllint.yaml`, `renovate.json`, `scripts/configure-github.sh`, `.oxfmtrc.json`.
 
-- `vite.config.ts` — only its `fmt`, `lint`, and `run.tasks` blocks. Copy the `lint` block whole: top-level `plugins`, `categories`, `rules`, `env`, `options`, and every template override, including the per-language `**/*.{js,jsx}`, `**/*.{ts,tsx}`, and test overrides that carry the hand-picked rules. Project-specific `ignorePatterns` entries, extra overrides for the project's own files, and extra tasks are placeholders. Plugins, `build`, `server`, and other Vite options belong to the application.
+- `vite.config.ts` — only its `check`, `lint`, and `run.tasks` blocks. The template has no `fmt` block: formatting settings live in `.oxfmtrc.json`, and `check.fmt: false` keeps `vp check` from running Vite+'s bundled oxfmt; remove any `fmt` block a project still carries. Copy the `lint` block whole: top-level `plugins`, `categories`, `rules`, `env`, `options`, and every template override, including the per-language `**/*.{js,jsx}`, `**/*.{ts,tsx}`, and test overrides that carry the hand-picked rules. Project-specific `ignorePatterns` entries, extra overrides for the project's own files, and extra tasks are placeholders. Plugins, `build`, `server`, and other Vite options belong to the application.
 - `.github/dependabot.yml` — schedule, cooldown, limits, labels, commit-message, and the `github-actions` entry match the template. npm `groups` are placeholders: keep the template's groups for packages the project uses and add groups for its own lockstep dependencies. The npm `ignore` entry for `vite-plus` is managed too: Renovate owns vite-plus, so a project carries that ignore only together with the template's `renovate.json`, never one without the other.
 - `.gitignore` — the template's entries are the baseline every project carries; entries for the project's own build output and generated files are placeholders. The [Git ignore files](#git-ignore-files) scan still governs dead or misplaced entries.
 
@@ -78,7 +78,7 @@ Also check npm-managed tooling with `npm outdated` (and `vp` where applicable).
 
 Suspect configs for this template's toolchain:
 
-- **Formatting (template uses oxfmt):** `.prettierrc*` (`.prettierrc`, `.prettierrc.json`, `.prettierrc.json5`, `.prettierrc.yaml`, `.prettierrc.js`, …), `.prettierignore`, `prettier.config.*`, a `prettier` key in `package.json`, `.editorconfig` rules that contradict oxfmt.
+- **Formatting (template uses [oxfmt-next-line](https://www.npmjs.com/package/oxfmt-next-line), an oxfmt fork with next-line braces, configured in `.oxfmtrc.json`):** a `fmt` block in `vite.config.ts`, `vp fmt` in scripts or hooks, `.prettierrc*` (`.prettierrc`, `.prettierrc.json`, `.prettierrc.json5`, `.prettierrc.yaml`, `.prettierrc.js`, …), `.prettierignore`, `prettier.config.*`, a `prettier` key in `package.json`, `.editorconfig` rules that contradict oxfmt.
 - **Linting (template uses oxlint):** `biome.json`, `biome.jsonc`, `.eslintrc*`, `eslint.config.*`, `.eslintignore`, `tslint.json`.
 - **General:** any other dot-config, `package.json` script, devDependency, or pre-commit hook referencing a tool the template has dropped.
 

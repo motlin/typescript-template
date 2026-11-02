@@ -8,7 +8,8 @@ Use it if you maintain several TypeScript or Node projects and want them to shar
 
 ## What it covers
 
-- The [Vite+](https://viteplus.dev/guide/) toolchain for development, building, testing, formatting, linting, and type checking
+- The [Vite+](https://viteplus.dev/guide/) toolchain for development, building, testing, linting, and type checking
+- Formatting with [oxfmt-next-line](https://www.npmjs.com/package/oxfmt-next-line), a fork of oxfmt that puts opening braces on their own line
 - Pinned tool and runtime versions
 - Pre-commit hooks and Markdown, YAML, and justfile linting
 - GitHub Actions workflows for pushes, pull requests, and merge queues
