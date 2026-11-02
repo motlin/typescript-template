@@ -5,32 +5,9 @@ import react from "@vitejs/plugin-react";
 process.title = "typescript-template";
 
 export default defineConfig({
-	fmt: {
-		semi: true,
-		singleQuote: false,
-		useTabs: true,
-		tabWidth: 4,
-		printWidth: 120,
-		proseWrap: "never",
-		embeddedLanguageFormatting: "off",
-		bracketSpacing: false,
-		trailingComma: "all",
-		arrowParens: "always",
-		overrides: [
-			{
-				files: [".yamllint.yaml", "**/*.yaml", "**/*.yml"],
-				options: {
-					useTabs: false,
-					tabWidth: 2,
-				},
-			},
-			{
-				files: ["**/*.md"],
-				options: {
-					printWidth: 320,
-				},
-			},
-		],
+	// Formatting runs through oxfmt-next-line (configured in .oxfmtrc.json), not Vite+'s bundled oxfmt.
+	check: {
+		fmt: false,
 	},
 	run: {
 		tasks: {

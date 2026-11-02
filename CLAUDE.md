@@ -25,7 +25,11 @@ Run `vp toolchain` to show versions and relationships in the active Vite+ releas
 
 ## Justfile
 
-The justfile wraps the common `vp` commands and installs dependencies first: `just dev`, `just check`, `just test`, `just build`, and `just storybook`. `just verify` runs the full verification (check, build, fallow, pre-commit).
+The justfile wraps the common `vp` commands and installs dependencies first: `just dev`, `just format`, `just check`, `just test`, `just build`, and `just storybook`. `just verify` runs the full verification (check, build, fallow, pre-commit).
+
+## Formatting
+
+Formatting uses [oxfmt-next-line](https://www.npmjs.com/package/oxfmt-next-line), a fork of oxfmt that puts opening braces on their own line. mise installs it, and it reads `.oxfmtrc.json`. Run `just format` or `oxfmt-next-line`, not `vp fmt`: Vite+'s bundled oxfmt does not support next-line braces, so `vite.config.ts` has no `fmt` block and sets `check.fmt: false`, which makes `vp check` lint and type-check without formatting. The pre-commit `oxfmt` hook enforces formatting in CI.
 
 ## Syncing siblings
 
