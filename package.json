@@ -3,7 +3,8 @@
 	"version": "0.0.0",
 	"description": "A standardized TypeScript project template",
 	"type": "module",
-	"scripts": {
+	"scripts":
+	{
 		"preinstall": "npx only-allow pnpm",
 		"dev": "vp dev",
 		"preview": "vp preview",
@@ -22,12 +23,14 @@
 		"test-storybook": "npx concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npx http-server storybook-static --port 6006 --silent\" \"npx wait-on tcp:127.0.0.1:6006 && test-storybook\"",
 		"prepare": "VITE_GIT_HOOKS=0 vp config"
 	},
-	"dependencies": {
+	"dependencies":
+	{
 		"agentation": "^3.1.2",
 		"react": "^19.3.1",
 		"react-dom": "^19.3.1"
 	},
-	"devDependencies": {
+	"devDependencies":
+	{
 		"@chromatic-com/storybook": "^5.6.0",
 		"@storybook/addon-a11y": "^10.6.5",
 		"@storybook/addon-docs": "^10.6.5",

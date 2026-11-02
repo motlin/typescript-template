@@ -1,11 +1,13 @@
 import {Button} from "./Button";
 import "./header.css";
 
-type User = {
+type User =
+{
 	name: string;
 };
 
-export interface HeaderProps {
+export interface HeaderProps
+{
 	user?: User | undefined;
 	onLogin?: (() => void) | undefined;
 	onLogout?: (() => void) | undefined;

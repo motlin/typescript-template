@@ -1,10 +1,14 @@
 import {describe, it, expect} from "vite-plus/test";
 import {createUser, validateEmail, updateUser, type User} from "../src/user.js";
 
-describe("User module", () => {
-	describe("createUser", () => {
-		it("creates a user with generated id and timestamps", () => {
-			const userData = {
+describe("User module", () =>
+{
+	describe("createUser", () =>
+	{
+		it("creates a user with generated id and timestamps", () =>
+		{
+			const userData =
+			{
 				name: "John Doe",
 				email: "john@example.com",
 			};
@@ -21,14 +25,17 @@ describe("User module", () => {
 		});
 	});
 
-	describe("validateEmail", () => {
-		it("validates correct email addresses", () => {
+	describe("validateEmail", () =>
+	{
+		it("validates correct email addresses", () =>
+		{
 			expect(validateEmail("user@example.com")).toBe(true);
 			expect(validateEmail("test.email@domain.co.uk")).toBe(true);
 			expect(validateEmail("name+tag@example.org")).toBe(true);
 		});
 
-		it("rejects invalid email addresses", () => {
+		it("rejects invalid email addresses", () =>
+		{
 			expect(validateEmail("invalid")).toBe(false);
 			expect(validateEmail("@example.com")).toBe(false);
 			expect(validateEmail("user@")).toBe(false);
@@ -37,9 +44,12 @@ describe("User module", () => {
 		});
 	});
 
-	describe("updateUser", () => {
-		it("updates user fields and updatedAt timestamp", () => {
-			const originalUser: User = {
+	describe("updateUser", () =>
+	{
+		it("updates user fields and updatedAt timestamp", () =>
+		{
+			const originalUser: User =
+			{
 				id: "123",
 				name: "Original Name",
 				email: "original@example.com",
@@ -48,9 +58,12 @@ describe("User module", () => {
 			};
 
 			const beforeUpdate = Date.now();
-			const updatedUser = updateUser(originalUser, {
-				name: "Updated Name",
-			});
+			const updatedUser = updateUser(
+				originalUser,
+				{
+					name: "Updated Name",
+				},
+			);
 
 			expect(updatedUser.id).toBe(originalUser.id);
 			expect(updatedUser.name).toBe("Updated Name");
@@ -59,8 +72,10 @@ describe("User module", () => {
 			expect(updatedUser.updatedAt.getTime()).toBeGreaterThanOrEqual(beforeUpdate);
 		});
 
-		it("returns new object without mutating original", () => {
-			const originalUser: User = {
+		it("returns new object without mutating original", () =>
+		{
+			const originalUser: User =
+			{
 				id: "123",
 				name: "Original",
 				email: "test@example.com",
@@ -68,7 +83,12 @@ describe("User module", () => {
 				updatedAt: new Date(),
 			};
 
-			const updatedUser = updateUser(originalUser, {name: "Updated"});
+			const updatedUser = updateUser(
+				originalUser,
+				{
+					name: "Updated",
+				},
+			);
 
 			expect(updatedUser).not.toBe(originalUser);
 			expect(originalUser.name).toBe("Original");
