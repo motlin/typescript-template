@@ -20,7 +20,8 @@
 		"jiti",
 		"lucide-react",
 	],
-	"rules": {
+	"rules":
+	{
 		"unused-dependencies": "error",
 	},
 }

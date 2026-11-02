@@ -4,7 +4,8 @@ import {Agentation} from "agentation";
 
 const root = document.getElementById("app");
 
-if (!root) {
+if (!root)
+{
 	throw new Error("Root element not found");
 }
 

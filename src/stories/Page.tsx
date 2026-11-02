@@ -3,25 +3,38 @@ import {useState} from "react";
 import {Header} from "./Header";
 import "./page.css";
 
-type User = {
+type User =
+{
 	name: string;
 };
 
-export const Page = () => {
+export const Page = () =>
+{
 	const [user, setUser] = useState<User>();
 
 	return (
 		<article>
 			<Header
 				user={user}
-				onLogin={() => {
-					setUser({name: "Jane Doe"});
+				onLogin={() =>
+				{
+					setUser(
+						{
+							name: "Jane Doe",
+						},
+					);
 				}}
-				onLogout={() => {
+				onLogout={() =>
+				{
 					setUser(undefined);
 				}}
-				onCreateAccount={() => {
-					setUser({name: "Jane Doe"});
+				onCreateAccount={() =>
+				{
+					setUser(
+						{
+							name: "Jane Doe",
+						},
+					);
 				}}
 			/>
 
